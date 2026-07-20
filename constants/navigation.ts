@@ -12,10 +12,6 @@ export const NAVIGATION = [
     href: "/about",
   },
   {
-    label: "Custom Orders",
-    href: "/custom-orders",
-  },
-  {
     label: "Contact",
     href: "/contact",
   },

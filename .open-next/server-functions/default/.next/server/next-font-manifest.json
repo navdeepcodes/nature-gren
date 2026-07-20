@@ -1,0 +1,71 @@
+{
+  "app": {
+    "[project]/app/_not-found/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/about/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/dashboard/about/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/dashboard/categories/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/dashboard/hero/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/dashboard/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/dashboard/products/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/dashboard/settings/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/dashboard/story/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/login/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/admin/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/cart/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/contact/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/shop/[slug]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ],
+    "[project]/app/shop/page": [
+      "static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2",
+      "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

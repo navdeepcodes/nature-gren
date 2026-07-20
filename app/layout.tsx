@@ -4,6 +4,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 import { CartProvider } from "@/context/CartContext";
+import { generateMetadata, SITE } from "@/lib/seo/metadata";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,102 +17,29 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://naturegren.com";
+export const metadata: Metadata = generateMetadata();
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "NatureGren",
-  url: baseUrl,
-  logo: `${baseUrl}/logo.png`,
-  description:
-    "Premium handcrafted eco-friendly jute products.",
-};
 
-export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  name: SITE.name,
 
-  title: {
-    default:
-      "NatureGren | Premium Handcrafted Jute Products",
-    template: "%s | NatureGren",
-  },
+  url: SITE.url,
 
-  description:
-    "Discover premium handcrafted jute bags, home décor, lifestyle products and eco-friendly solutions made with sustainability and timeless craftsmanship.",
+  logo: `${SITE.url}/logo.png`,
 
-  keywords: [
-    "NatureGren",
-    "Jute Bags",
-    "Handcrafted Jute Products",
-    "Eco Friendly Products",
-    "Sustainable Bags",
-    "Jute Shopping Bags",
-    "Jute Home Decor",
-    "Natural Fiber Products",
-    "Reusable Bags",
-    "India",
+  image: `${SITE.url}${SITE.image}`,
+
+  description: SITE.description,
+
+  sameAs: [
+    // Add your real social URLs here
+    // "https://www.facebook.com/naturegren",
+    // "https://www.instagram.com/naturegren",
+    // "https://www.linkedin.com/company/naturegren",
+    // "https://www.pinterest.com/naturegren",
   ],
-
-  authors: [
-    {
-      name: "NatureGren",
-    },
-  ],
-
-  creator: "NatureGren",
-
-  publisher: "NatureGren",
-
-  robots: {
-    index: true,
-    follow: true,
-  },
-
-  alternates: {
-    canonical: "/",
-  },
-
-  openGraph: {
-    type: "website",
-    locale: "en_IN",
-    url: "/",
-    siteName: "NatureGren",
-
-    title:
-      "NatureGren | Premium Handcrafted Jute Products",
-
-    description:
-      "Premium handcrafted jute products designed with sustainability, elegance and everyday functionality.",
-
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "NatureGren",
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-
-    title: "NatureGren",
-
-    description:
-      "Premium handcrafted eco-friendly jute products.",
-
-    images: ["/og-image.jpg"],
-  },
-
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
 };
 
 export default function RootLayout({
@@ -120,17 +48,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              organizationSchema
-            ),
+            __html: JSON.stringify(organizationSchema),
           }}
         />
       </head>
@@ -138,9 +61,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${cormorant.variable}`}
       >
-        <CartProvider>
-          {children}
-        </CartProvider>
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

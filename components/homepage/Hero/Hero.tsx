@@ -1,7 +1,7 @@
 import Container from "@/components/layout/Container";
 
 import HeroContent from "./HeroContent";
-import HeroImage from "./HeroImage";
+import HeroCarousel from "../HeroCarousel";
 import HeroBackground from "./HeroBackground";
 
 import type { HomepageHero } from "@/lib/homepage/hero";
@@ -12,7 +12,7 @@ interface HeroProps {
 
 export default function Hero({ hero }: HeroProps) {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden py-20 lg:py-24">
       <HeroBackground />
 
       <Container>
@@ -21,13 +21,10 @@ export default function Hero({ hero }: HeroProps) {
             relative
             z-10
             grid
-            min-h-[calc(100vh-88px)]
             items-center
-            gap-20
-            py-16
-            lg:grid-cols-[0.95fr_1.05fr]
-            lg:gap-24
-            lg:py-0
+            gap-12
+            lg:grid-cols-[1fr_1fr]
+            lg:gap-16
           "
         >
           <HeroContent
@@ -40,8 +37,12 @@ export default function Hero({ hero }: HeroProps) {
             }}
           />
 
-          <div className="relative flex justify-center lg:justify-end">
-            <HeroImage image={hero.image_url} />
+          <div className="flex items-center justify-center lg:justify-end">
+            <div className="w-full max-w-[560px]">
+              <HeroCarousel
+                images={hero.image_urls ?? []}
+              />
+            </div>
           </div>
         </div>
       </Container>

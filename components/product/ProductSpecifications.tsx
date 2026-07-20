@@ -28,7 +28,7 @@ export default function ProductSpecifications({
     },
     {
       label: "Country of Origin",
-      value: "India",
+      value: "Nepal",
     },
   ];
 

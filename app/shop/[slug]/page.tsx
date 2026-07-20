@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import AnimatedBackground from "@/components/background/AnimatedBackground";
@@ -16,76 +15,14 @@ import RelatedProducts from "@/components/product/RelatedProducts";
 
 import { createClient } from "@/lib/supabase/server";
 
+import { generateProductMetadata } from "./metadata";
+
+export const generateMetadata = generateProductMetadata;
+
 interface Props {
   params: Promise<{
     slug: string;
   }>;
-}
-
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
-  const { slug } = await params;
-
-  const supabase = await createClient();
-
-  const { data: product } = await supabase
-    .from("products")
-    .select(
-      `
-      name,
-      slug,
-      description,
-      image_url
-      `
-    )
-    .eq("slug", slug)
-    .single();
-
-  if (!product) {
-    return {
-      title: "Product Not Found",
-    };
-  }
-
-  const description =
-    product.description ??
-    `Discover ${product.name}, a premium handcrafted eco-friendly jute product from NatureGren.`;
-
-  return {
-    title: product.name,
-
-    description,
-
-    alternates: {
-      canonical: `/shop/${product.slug}`,
-    },
-
-    openGraph: {
-      title: product.name,
-      description,
-      url: `/shop/${product.slug}`,
-
-      images: product.image_url
-        ? [
-            {
-              url: product.image_url,
-              alt: product.name,
-            },
-          ]
-        : [],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: product.name,
-      description,
-
-      images: product.image_url
-        ? [product.image_url]
-        : [],
-    },
-  };
 }
 
 export default async function ProductPage({
@@ -136,8 +73,7 @@ export default async function ProductPage({
       name: "NatureGren",
     },
 
-    category:
-      product.category?.name,
+    category: product.category?.name,
 
     url: `${baseUrl}/shop/${product.slug}`,
   };
@@ -152,9 +88,7 @@ export default async function ProductPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              productSchema
-            ),
+            __html: JSON.stringify(productSchema),
           }}
         />
 
@@ -185,9 +119,7 @@ export default async function ProductPage({
                   productId={product.id}
                   productName={product.name}
                   productSlug={product.slug}
-                  imageUrl={
-                    product.image_url
-                  }
+                  imageUrl={product.image_url}
                 />
               </div>
             </div>
@@ -195,9 +127,7 @@ export default async function ProductPage({
             <ProductFeatures />
 
             <ProductSpecifications
-              category={
-                product.category?.name
-              }
+              category={product.category?.name}
             />
 
             <RelatedProducts />

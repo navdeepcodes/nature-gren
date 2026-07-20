@@ -2,16 +2,11 @@ import Link from "next/link";
 
 import Container from "@/components/layout/Container";
 
-import {
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 import {
   FaFacebookF,
   FaInstagram,
-  FaLinkedinIn,
 } from "react-icons/fa6";
 
 export default function Footer() {
@@ -31,7 +26,9 @@ export default function Footer() {
 
             <div className="mt-8 flex gap-4">
               <Link
-                href="#"
+                href="https://www.instagram.com/naturegren_inspiredbynature?igsh=MXFuNnNwcGtldzBjZg=="
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition duration-300 hover:bg-white hover:text-[#1f2b1d]"
               >
@@ -39,19 +36,13 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="#"
+                href="https://www.facebook.com/share/1DMJsJ8PPG/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition duration-300 hover:bg-white hover:text-[#1f2b1d]"
               >
                 <FaFacebookF size={16} />
-              </Link>
-
-              <Link
-                href="#"
-                aria-label="LinkedIn"
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition duration-300 hover:bg-white hover:text-[#1f2b1d]"
-              >
-                <FaLinkedinIn size={17} />
               </Link>
             </div>
           </div>
@@ -126,20 +117,20 @@ export default function Footer() {
               <div className="flex gap-3">
                 <MapPin size={18} className="mt-1 shrink-0" />
                 <p>
-                  Bengaluru,
+                  Dallas
                   <br />
-                  Karnataka, India
+                  Irving, Texas, 75038
                 </p>
               </div>
 
               <div className="flex gap-3">
                 <Phone size={18} className="mt-1 shrink-0" />
-                <p>+91 9876543210</p>
+                <p>+1 (469) 350-6400</p>
               </div>
 
               <div className="flex gap-3">
                 <Mail size={18} className="mt-1 shrink-0" />
-                <p>hello@naturegren.com</p>
+                <p>contact@naturegren.com</p>
               </div>
             </div>
           </div>
@@ -162,7 +153,7 @@ export default function Footer() {
         >
           <p>© 2026 NatureGren. All rights reserved.</p>
 
-          <p>Handcrafted with ❤️ in India.</p>
+          <p>Handcrafted with ❤️ in USA.</p>
         </div>
       </Container>
     </footer>

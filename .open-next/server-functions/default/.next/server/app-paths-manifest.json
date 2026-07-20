@@ -1,0 +1,22 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about/page": "app/about/page.js",
+  "/admin/dashboard/about/page": "app/admin/dashboard/about/page.js",
+  "/admin/dashboard/categories/page": "app/admin/dashboard/categories/page.js",
+  "/admin/dashboard/hero/page": "app/admin/dashboard/hero/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/dashboard/products/page": "app/admin/dashboard/products/page.js",
+  "/admin/dashboard/settings/page": "app/admin/dashboard/settings/page.js",
+  "/admin/dashboard/story/page": "app/admin/dashboard/story/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/search/route": "app/api/search/route.js",
+  "/cart/page": "app/cart/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/page": "app/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/shop/[slug]/page": "app/shop/[slug]/page.js",
+  "/shop/page": "app/shop/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
+}

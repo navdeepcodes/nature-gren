@@ -37,7 +37,7 @@ const steps = [
     icon: Package,
     title: "Delivered",
     description:
-      "Beautifully packed and shipped to customers across India and worldwide.",
+      "Beautifully packed and shipped to customers across US and worldwide.",
   },
 ];
 

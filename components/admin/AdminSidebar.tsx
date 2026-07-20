@@ -33,8 +33,8 @@ const items = [
     icon: Package,
   },
   {
-    name: "Story",
-    href: "/admin/dashboard/story",
+    name: "About",
+    href: "/admin/dashboard/about",
     icon: BookOpen,
   },
   {
@@ -64,7 +64,9 @@ export default function AdminSidebar() {
           {items.map((item) => {
             const Icon = item.icon;
 
-            const active = pathname === item.href;
+            const active =
+              pathname === item.href ||
+              pathname.startsWith(`${item.href}/`);
 
             return (
               <Link
@@ -77,7 +79,6 @@ export default function AdminSidebar() {
                 }`}
               >
                 <Icon size={18} />
-
                 <span>{item.name}</span>
               </Link>
             );

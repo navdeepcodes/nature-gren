@@ -25,7 +25,6 @@ interface ProductModalProps {
   open: boolean;
   onClose: () => void;
   onSaved?: () => void;
-
   product?: Product | null;
 }
 
@@ -38,32 +37,20 @@ export default function ProductModal({
   const editing = !!product;
 
   const [categories, setCategories] = useState<Category[]>([]);
-
-  const [imageUrl, setImageUrl] =
-    useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const [name, setName] = useState("");
-  const [description, setDescription] =
-    useState("");
-
-  const [categoryId, setCategoryId] =
-    useState("");
-
-  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [categoryId, setCategoryId] = useState("");
 
   const [sku, setSku] = useState("");
 
-  const [displayOrder, setDisplayOrder] =
-    useState(0);
+  const [displayOrder, setDisplayOrder] = useState(0);
 
-  const [featured, setFeatured] =
-    useState(false);
+  const [featured, setFeatured] = useState(false);
+  const [active, setActive] = useState(true);
 
-  const [active, setActive] =
-    useState(true);
-
-  const [saving, setSaving] =
-    useState(false);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -72,22 +59,11 @@ export default function ProductModal({
 
     if (product) {
       setImageUrl(product.image_url);
-
       setName(product.name);
       setDescription(product.description);
-
       setCategoryId(product.category_id ?? "");
-
-      setPrice(
-        product.price != null
-          ? product.price.toString()
-          : ""
-      );
-
       setSku(product.sku ?? "");
-
       setDisplayOrder(product.display_order);
-
       setFeatured(product.featured);
       setActive(product.active);
     } else {
@@ -97,17 +73,11 @@ export default function ProductModal({
 
   function resetForm() {
     setImageUrl(null);
-
     setName("");
     setDescription("");
-
     setCategoryId("");
-
-    setPrice("");
     setSku("");
-
     setDisplayOrder(0);
-
     setFeatured(false);
     setActive(true);
   }
@@ -115,11 +85,9 @@ export default function ProductModal({
   async function loadCategories() {
     try {
       const data = await getCategories();
-
       setCategories(data);
     } catch (error) {
       console.error(error);
-
       alert("Failed to load categories.");
     }
   }
@@ -136,34 +104,16 @@ export default function ProductModal({
       const payload = {
         name,
         description,
-
-        category_id:
-          categoryId || null,
-
+        category_id: categoryId || null,
         image_url: imageUrl,
-
         featured,
         active,
-
-        display_order:
-          displayOrder,
-
-        price:
-          price === ""
-            ? null
-            : Number(price),
-
-        sku:
-          sku.trim() === ""
-            ? null
-            : sku,
+        display_order: displayOrder,
+        sku: sku.trim() === "" ? null : sku.trim(),
       };
 
       if (editing && product) {
-        await updateProduct(
-          product.id,
-          payload
-        );
+        await updateProduct(product.id, payload);
       } else {
         await createProduct(payload);
       }
@@ -171,11 +121,9 @@ export default function ProductModal({
       onSaved?.();
 
       resetForm();
-
       onClose();
     } catch (error) {
       console.error(error);
-
       alert("Failed to save product.");
     } finally {
       setSaving(false);
@@ -187,14 +135,10 @@ export default function ProductModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-6">
       <div className="max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-[32px] bg-white shadow-2xl">
-        {/* Header */}
-
         <div className="flex items-center justify-between border-b px-8 py-6">
           <div>
             <h2 className="text-2xl font-semibold">
-              {editing
-                ? "Edit Product"
-                : "Add Product"}
+              {editing ? "Edit Product" : "Add Product"}
             </h2>
 
             <p className="mt-1 text-sm text-gray-500">
@@ -212,8 +156,6 @@ export default function ProductModal({
           </button>
         </div>
 
-        {/* Body */}
-
         <div className="space-y-6 p-8">
           <ProductImage
             imageUrl={imageUrl}
@@ -224,9 +166,7 @@ export default function ProductModal({
             name={name}
             description={description}
             onNameChange={setName}
-            onDescriptionChange={
-              setDescription
-            }
+            onDescriptionChange={setDescription}
           />
 
           <ProductCategory
@@ -236,9 +176,7 @@ export default function ProductModal({
           />
 
           <ProductPricing
-            price={price}
             sku={sku}
-            onPriceChange={setPrice}
             onSkuChange={setSku}
           />
 
@@ -246,13 +184,9 @@ export default function ProductModal({
             featured={featured}
             active={active}
             displayOrder={displayOrder}
-            onFeaturedChange={
-              setFeatured
-            }
+            onFeaturedChange={setFeatured}
             onActiveChange={setActive}
-            onDisplayOrderChange={
-              setDisplayOrder
-            }
+            onDisplayOrderChange={setDisplayOrder}
           />
         </div>
 

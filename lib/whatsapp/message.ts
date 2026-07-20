@@ -15,25 +15,19 @@ export function createWhatsAppLink(
 
   const productUrl = `${website}/shop/${product.slug}`;
 
-  const message = `Hello NatureGren 👋
+  const message = `Hello NatureGren,
 
-I'm interested in the following product:
+I'm interested in purchasing the following product:
 
-━━━━━━━━━━━━━━━━━━
+Product: ${product.name}
+Quantity: ${quantity}
 
-📦 ${product.name}
-🔗 ${productUrl}
-📦 Quantity: ${quantity}
+Product Link:
+${productUrl}
 
-━━━━━━━━━━━━━━━━━━
+Could you please provide more information about this product, including its price, availability, specifications, delivery charges, and estimated delivery time?
 
-Please share:
-
-• Price
-• Delivery Charges
-• Estimated Delivery Time
-
-Thank you!`;
+Thank you. I look forward to your response.`;
 
   return `https://wa.me/${PHONE}?text=${encodeURIComponent(
     message

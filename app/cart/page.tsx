@@ -54,13 +54,19 @@ ${base}/shop/${item.slug}
 `;
     });
 
-    message += `Please share:
+    message += `Could you please provide more information about these products, including:
 
-• Pricing
+• Price
+
+• Availability
+
+• Specifications
+
 • Delivery Charges
+
 • Estimated Delivery Time
 
-Thank you.`;
+Thank you. I look forward to your response`;
 
     window.open(
       `https://wa.me/${PHONE}?text=${encodeURIComponent(

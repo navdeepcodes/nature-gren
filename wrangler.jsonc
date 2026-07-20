@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nature-gren",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-07-16",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://naturegren.com",
+    "NEXT_PUBLIC_SUPABASE_URL": "https://qyfntagbyxvfxjnkbarr.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5Zm50YWdieXh2ZnhqbmtiYXJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2NDA1MjUsImV4cCI6MjA5OTIxNjUyNX0.vsp52V2g3hA5oH1NoH-W3Nww3HasTj5iG8iE4wO3kP4"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

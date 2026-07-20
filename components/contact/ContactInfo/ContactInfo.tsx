@@ -11,17 +11,17 @@ const info = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 XXXXX XXXXX",
+    value: "+1 (469) 350-6400",
   },
   {
     icon: Mail,
     title: "Email",
-    value: "info@naturegren.com",
+    value: "naturegren001@gmail.com",
   },
   {
     icon: MapPin,
     title: "Address",
-    value: "Bengaluru, Karnataka, India",
+    value: "Dallas,Irving ,Texas,USA",
   },
   {
     icon: Clock,

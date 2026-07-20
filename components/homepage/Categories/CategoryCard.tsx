@@ -22,15 +22,16 @@ export default function CategoryCard({
         overflow-hidden
         rounded-[30px]
         border
-        border-[var(--border)]
-        bg-white
+        border-[#E7DDD0]
+        bg-[#F8F4EE]
+        shadow-[0_8px_24px_rgba(101,67,33,0.06)]
         transition-all
         duration-300
-        hover:-translate-y-1
-        hover:shadow-xl
+        hover:-translate-y-1.5
+        hover:shadow-[0_18px_40px_rgba(101,67,33,0.12)]
       "
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#f5f3ee]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#F3EEE6]">
         {image ? (
           <Image
             src={image}
@@ -45,25 +46,36 @@ export default function CategoryCard({
             "
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-sm text-gray-500">
+          <div className="flex h-full items-center justify-center text-sm text-[var(--text-muted)]">
             No Image
           </div>
         )}
       </div>
 
-      <div className="flex items-center justify-between p-6">
-        <h3 className="text-xl font-semibold text-[var(--text)]">
+      <div className="flex items-center justify-between border-t border-[#EEE5D8] bg-[#F8F4EE] px-6 py-5">
+        <h3 className="font-serif text-[1.4rem] text-[var(--text)]">
           {title}
         </h3>
 
-        <ArrowRight
-          size={20}
+        <div
           className="
-            transition-transform
+            flex
+            h-11
+            w-11
+            items-center
+            justify-center
+            rounded-full
+            bg-[#EFE6D8]
+            text-[var(--text)]
+            transition-all
             duration-300
+            group-hover:bg-[var(--primary)]
+            group-hover:text-white
             group-hover:translate-x-1
           "
-        />
+        >
+          <ArrowRight size={18} />
+        </div>
       </div>
     </Link>
   );

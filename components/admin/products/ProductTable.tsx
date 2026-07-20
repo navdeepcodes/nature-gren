@@ -61,10 +61,6 @@ export default function ProductTable({
             </th>
 
             <th className="px-8 py-5 text-left font-semibold">
-              Price
-            </th>
-
-            <th className="px-8 py-5 text-left font-semibold">
               Featured
             </th>
 
@@ -85,7 +81,6 @@ export default function ProductTable({
               className="border-b last:border-b-0 hover:bg-[#faf9f6]"
             >
               {/* Image */}
-
               <td className="px-8 py-5">
                 {product.image_url ? (
                   <div className="relative h-16 w-16 overflow-hidden rounded-xl">
@@ -104,7 +99,6 @@ export default function ProductTable({
               </td>
 
               {/* Product */}
-
               <td className="px-8 py-5">
                 <div>
                   <p className="font-semibold text-[#1f2b1d]">
@@ -118,21 +112,11 @@ export default function ProductTable({
               </td>
 
               {/* Category */}
-
               <td className="px-8 py-5">
                 {product.category?.name ?? "-"}
               </td>
 
-              {/* Price */}
-
-              <td className="px-8 py-5">
-                {product.price == null
-                  ? "-"
-                  : `₹${product.price}`}
-              </td>
-
               {/* Featured */}
-
               <td className="px-8 py-5">
                 {product.featured ? (
                   <div className="flex items-center gap-2 text-amber-600">
@@ -140,7 +124,6 @@ export default function ProductTable({
                       size={16}
                       fill="currentColor"
                     />
-
                     Featured
                   </div>
                 ) : (
@@ -149,7 +132,6 @@ export default function ProductTable({
               </td>
 
               {/* Status */}
-
               <td className="px-8 py-5">
                 {product.active ? (
                   <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
@@ -163,7 +145,6 @@ export default function ProductTable({
               </td>
 
               {/* Actions */}
-
               <td className="px-8 py-5">
                 <div className="flex justify-end gap-2">
                   <button

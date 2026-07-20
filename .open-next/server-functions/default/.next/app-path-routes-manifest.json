@@ -1,0 +1,22 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/admin/dashboard/about/page": "/admin/dashboard/about",
+  "/admin/dashboard/categories/page": "/admin/dashboard/categories",
+  "/admin/dashboard/hero/page": "/admin/dashboard/hero",
+  "/admin/dashboard/page": "/admin/dashboard",
+  "/admin/dashboard/products/page": "/admin/dashboard/products",
+  "/admin/dashboard/settings/page": "/admin/dashboard/settings",
+  "/admin/dashboard/story/page": "/admin/dashboard/story",
+  "/admin/login/page": "/admin/login",
+  "/admin/page": "/admin",
+  "/api/search/route": "/api/search",
+  "/cart/page": "/cart",
+  "/contact/page": "/contact",
+  "/page": "/",
+  "/robots.txt/route": "/robots.txt",
+  "/shop/[slug]/page": "/shop/[slug]",
+  "/shop/page": "/shop",
+  "/sitemap.xml/route": "/sitemap.xml"
+}

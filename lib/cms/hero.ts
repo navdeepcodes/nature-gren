@@ -10,7 +10,9 @@ export interface Hero {
   primary_button: string;
   secondary_button: string;
 
-  image_url: string | null;
+  image_urls: string[];
+
+  featured_product_id: string | null;
 }
 
 export async function getHero() {
@@ -24,7 +26,11 @@ export async function getHero() {
 
   if (error) throw error;
 
-  return data as Hero;
+  return {
+    ...data,
+    image_urls: data.image_urls ?? [],
+    featured_product_id: data.featured_product_id ?? null,
+  } as Hero;
 }
 
 export async function updateHero(
@@ -35,7 +41,15 @@ export async function updateHero(
 
   const { error } = await supabase
     .from("hero")
-    .update(hero)
+    .update({
+      title: hero.title,
+      accent: hero.accent,
+      description: hero.description,
+      primary_button: hero.primary_button,
+      secondary_button: hero.secondary_button,
+      image_urls: hero.image_urls ?? [],
+      featured_product_id: hero.featured_product_id,
+    })
     .eq("id", id);
 
   if (error) throw error;

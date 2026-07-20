@@ -1,6 +1,11 @@
+import Link from "next/link";
+
 export default function Logo() {
   return (
-    <div className="flex flex-col leading-none">
+    <Link
+      href="/"
+      className="flex flex-col leading-none"
+    >
       <span
         className="
           font-serif
@@ -24,6 +29,6 @@ export default function Logo() {
       >
         Handcrafted Jute
       </span>
-    </div>
+    </Link>
   );
 }
