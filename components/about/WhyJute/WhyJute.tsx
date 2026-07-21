@@ -1,6 +1,9 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
 
 import Container from "@/components/layout/Container";
+import JuteShowcase from "./JuteShowcase";
 
 export default function WhyJute() {
   const points = [
@@ -27,53 +30,125 @@ export default function WhyJute() {
   ];
 
   return (
-    <section className="bg-white py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-[#FCFAF7] py-28 lg:py-36">
+
+      {/* Background */}
+
+      <div className="absolute inset-0">
+
+        <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-[#F3F7EF] blur-[140px]" />
+
+        <div className="absolute right-0 bottom-0 h-[420px] w-[420px] rounded-full bg-[#F6F2EA] blur-[120px]" />
+
+      </div>
+
       <Container>
-        <div className="grid items-center gap-20 lg:grid-cols-[0.95fr_1.05fr]">
-          <div>
-            <span className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--primary)]">
+        <div className="relative grid items-center gap-24 lg:grid-cols-[0.9fr_1.1fr]">
+
+          {/* LEFT */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
+          >
+
+            <span className="inline-flex rounded-full bg-[#EDF5E9] px-5 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#426239]">
               Why Jute
             </span>
 
-            <h2 className="mt-5 font-serif text-5xl leading-tight text-[var(--text)]">
+            <h2 className="mt-8 max-w-xl font-serif text-5xl leading-[1.08] text-[var(--text)] lg:text-6xl">
               Sustainability
               <br />
-              Starts With Better Materials.
+              Starts With
+              <br />
+              Better Materials.
             </h2>
 
-            <p className="mt-8 text-lg leading-8 text-[var(--text-muted)]">
-              NatureGren chooses premium natural jute because it combines
-              timeless beauty, exceptional durability and environmental
-              responsibility in every product.
+            <p className="mt-8 max-w-xl text-lg leading-9 text-[var(--text-muted)]">
+              NatureGren carefully selects premium natural jute because it
+              combines timeless beauty, exceptional durability and genuine
+              environmental responsibility in every handcrafted product.
             </p>
 
-            <div className="mt-12 space-y-8">
-              {points.map((point) => (
-                <div key={point.title}>
-                  <h3 className="text-xl font-semibold text-[var(--text)]">
-                    {point.title}
-                  </h3>
+            <div className="mt-14 space-y-10">
 
-                  <p className="mt-3 leading-7 text-[var(--text-muted)]">
-                    {point.description}
-                  </p>
-                </div>
+              {points.map((point, index) => (
+                <motion.div
+                  key={point.title}
+                  initial={{
+                    opacity: 0,
+                    x: -20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    delay: index * 0.1,
+                  }}
+                  className="flex gap-6"
+                >
+
+                  <div className="mt-2 h-3 w-3 rounded-full bg-[#2E4B2C]" />
+
+                  <div>
+
+                    <h3 className="text-xl font-semibold text-[var(--text)]">
+                      {point.title}
+                    </h3>
+
+                    <p className="mt-3 max-w-lg leading-8 text-[var(--text-muted)]">
+                      {point.description}
+                    </p>
+
+                  </div>
+
+                </motion.div>
               ))}
-            </div>
-          </div>
 
-          <div className="relative overflow-hidden rounded-[32px]">
-            <div className="relative aspect-[4/5]">
-              <Image
-                src="/images/about/jute.jpg"
-                alt="Natural Jute"
-                fill
-                className="object-cover"
-              />
             </div>
-          </div>
+
+          </motion.div>
+
+          {/* RIGHT */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: 40,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+          >
+            <JuteShowcase />
+          </motion.div>
+
         </div>
       </Container>
+
     </section>
   );
 }

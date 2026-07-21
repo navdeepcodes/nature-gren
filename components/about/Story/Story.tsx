@@ -1,15 +1,20 @@
 import Image from "next/image";
 
 import Container from "@/components/layout/Container";
+import { About } from "@/lib/cms/about";
 
-export default function Story() {
+interface StoryProps {
+  about: About;
+}
+
+export default function Story({ about }: StoryProps) {
   return (
-    <section className="py-24 lg:py-32 bg-[#fcfaf7]">
+    <section className="bg-[#fcfaf7] py-24 lg:py-32">
       <Container>
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[32px]">
             <Image
-              src="/images/about/story.jpg"
+              src={about.story_image || "/images/about/story.jpg"}
               alt="NatureGren artisans"
               fill
               className="object-cover"
@@ -21,23 +26,12 @@ export default function Story() {
               Our Journey
             </span>
 
-            <h2 className="mt-5 font-serif text-5xl leading-tight text-[var(--text)]">
-              Handcrafted Tradition.
-              <br />
-              Sustainable Tomorrow.
+            <h2 className="mt-5 font-serif text-5xl leading-tight text-[var(--text)] whitespace-pre-line">
+              {about.story_title}
             </h2>
 
-            <p className="mt-8 text-lg leading-8 text-[var(--text-muted)]">
-              NatureGren was founded with a simple belief—beautiful products
-              should never come at the cost of the environment. Every bag,
-              basket and home accessory is handcrafted using natural jute by
-              skilled artisans.
-            </p>
-
-            <p className="mt-6 text-lg leading-8 text-[var(--text-muted)]">
-              By combining traditional craftsmanship with modern design, we
-              create products that are durable, elegant and environmentally
-              responsible for homes and businesses around the world.
+            <p className="mt-8 text-lg leading-8 text-[var(--text-muted)] whitespace-pre-line">
+              {about.story_description}
             </p>
           </div>
         </div>

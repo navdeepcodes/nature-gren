@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ImagePlus, Loader2, Trash2 } from "lucide-react";
+import {
+  ImagePlus,
+  Loader2,
+  Trash2,
+  Video,
+} from "lucide-react";
 
 import {
   uploadImage,
@@ -22,12 +27,16 @@ export default function ImageUploader({
 }: ImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [image, setImage] = useState<string | null>(value);
+  const [media, setMedia] = useState<string | null>(value);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    setImage(value);
+    setMedia(value);
   }, [value]);
+
+  const isVideo = media
+    ? /\.(mp4|webm|mov|ogg)$/i.test(media)
+    : false;
 
   async function handleFile(
     e: React.ChangeEvent<HTMLInputElement>
@@ -39,18 +48,18 @@ export default function ImageUploader({
     try {
       setUploading(true);
 
-      const previousImage = image;
+      const previousMedia = media;
 
       const url = await uploadImage(bucket, file);
 
-      if (previousImage) {
-        await deleteImage(bucket, previousImage);
+      if (previousMedia) {
+        await deleteImage(bucket, previousMedia);
       }
 
-      setImage(url);
+      setMedia(url);
       onChange?.(url);
     } catch (err) {
-      console.error("Image upload failed:", err);
+      console.error("Media upload failed:", err);
 
       if (err instanceof Error) {
         alert(err.message);
@@ -66,12 +75,12 @@ export default function ImageUploader({
     }
   }
 
-  async function removeImage() {
-    if (image) {
-      await deleteImage(bucket, image);
+  async function removeMedia() {
+    if (media) {
+      await deleteImage(bucket, media);
     }
 
-    setImage(null);
+    setMedia(null);
 
     onChange?.(null);
 
@@ -83,17 +92,31 @@ export default function ImageUploader({
   return (
     <div className="space-y-5">
       <div className="relative overflow-hidden rounded-[24px] border-2 border-dashed border-gray-300 bg-[#faf9f6]">
-        {image ? (
+
+        {media ? (
           <div className="relative aspect-[16/10]">
-            <Image
-              src={image}
-              alt="Preview"
-              fill
-              className="object-cover"
-            />
+
+            {isVideo ? (
+              <video
+                src={media}
+                controls
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <Image
+                src={media}
+                alt="Preview"
+                fill
+                className="object-cover"
+              />
+            )}
+
           </div>
         ) : (
           <div className="flex aspect-[16/10] flex-col items-center justify-center gap-4">
+
             {uploading ? (
               <>
                 <Loader2
@@ -114,24 +137,26 @@ export default function ImageUploader({
 
                 <div className="text-center">
                   <h3 className="font-medium">
-                    No Image Uploaded
+                    No Media Uploaded
                   </h3>
 
                   <p className="mt-2 text-sm text-gray-500">
-                    JPG, PNG or WEBP
+                    JPG • PNG • WEBP • MP4 • WEBM • MOV
                   </p>
                 </div>
               </>
             )}
+
           </div>
         )}
+
       </div>
 
       <input
         ref={inputRef}
         hidden
         type="file"
-        accept="image/*"
+        accept="image/*,video/mp4,video/webm,video/quicktime,video/ogg"
         onChange={handleFile}
       />
 
@@ -140,19 +165,25 @@ export default function ImageUploader({
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={uploading}
-          className="inline-flex h-12 items-center rounded-xl bg-[#2E4B2C] px-6 text-white transition hover:bg-[#243d23] disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#2E4B2C] px-6 text-white transition hover:bg-[#243d23] disabled:cursor-not-allowed disabled:opacity-50"
         >
+          {isVideo ? (
+            <Video size={18} />
+          ) : (
+            <ImagePlus size={18} />
+          )}
+
           {uploading
             ? "Uploading..."
-            : image
-            ? "Replace Image"
-            : "Upload Image"}
+            : media
+            ? "Replace Media"
+            : "Upload Media"}
         </button>
 
-        {image && (
+        {media && (
           <button
             type="button"
-            onClick={removeImage}
+            onClick={removeMedia}
             disabled={uploading}
             className="inline-flex h-12 items-center gap-2 rounded-xl border px-6 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
           >

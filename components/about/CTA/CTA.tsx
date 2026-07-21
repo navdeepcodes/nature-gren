@@ -2,12 +2,15 @@ import Link from "next/link";
 import { ArrowRight, Leaf } from "lucide-react";
 
 import Container from "@/components/layout/Container";
+import { About } from "@/lib/cms/about";
 
-export default function CTA() {
+interface CTAProps {
+  about: About;
+}
+
+export default function CTA({ about }: CTAProps) {
   return (
     <section className="relative overflow-hidden py-28">
-      {/* Background */}
-
       <div className="absolute inset-0 bg-[#faf7f2]" />
 
       <div className="absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-[#8BA96B]/20 blur-[120px]" />
@@ -32,13 +35,9 @@ export default function CTA() {
             md:px-20
           "
         >
-          {/* Decorative */}
-
           <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
 
           <div className="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-[#8BA96B]/20 blur-3xl" />
-
-          {/* Badge */}
 
           <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-3 backdrop-blur">
             <Leaf size={16} />
@@ -48,27 +47,17 @@ export default function CTA() {
             </span>
           </div>
 
-          {/* Heading */}
-
-          <h2 className="mx-auto mt-8 max-w-4xl font-serif text-4xl leading-tight md:text-6xl">
-            Bring Sustainability
-            <br />
-            Into Every Everyday Moment
+          <h2 className="mx-auto mt-8 max-w-4xl font-serif text-4xl leading-tight whitespace-pre-line md:text-6xl">
+            {about.cta_title}
           </h2>
 
-          {/* Description */}
-
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-white/75">
-            Whether you're looking for premium handcrafted jute products,
-            corporate gifting, export partnerships or custom manufacturing,
-            NatureGren is ready to build something meaningful with you.
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 whitespace-pre-line text-white/75">
+            {about.cta_description}
           </p>
-
-          {/* Buttons */}
 
           <div className="mt-14 flex flex-wrap justify-center gap-5">
             <Link
-              href="/shop"
+              href={about.cta_link || "/shop"}
               className="
                 inline-flex
                 h-14
@@ -85,7 +74,7 @@ export default function CTA() {
                 hover:shadow-xl
               "
             >
-              Explore Collection
+              {about.cta_button || "Explore Collection"}
 
               <ArrowRight size={18} />
             </Link>
@@ -111,8 +100,6 @@ export default function CTA() {
               Get Custom Quote
             </Link>
           </div>
-
-          {/* Bottom Stats */}
 
           <div className="mt-16 flex flex-wrap justify-center gap-12 border-t border-white/10 pt-10">
             <div>

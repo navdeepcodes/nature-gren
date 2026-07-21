@@ -10,7 +10,11 @@ import Values from "@/components/about/Values";
 import Stats from "@/components/about/Stats";
 import CTA from "@/components/about/CTA";
 
-export default function AboutPage() {
+import { getAbout } from "@/lib/cms/about";
+
+export default async function AboutPage() {
+  const about = await getAbout();
+
   return (
     <>
       <AnimatedBackground />
@@ -18,9 +22,9 @@ export default function AboutPage() {
       <Navbar />
 
       <main className="relative z-10">
-        <Hero />
+        <Hero about={about} />
 
-        <Story />
+        <Story about={about} />
 
         <WhyJute />
 
@@ -30,7 +34,7 @@ export default function AboutPage() {
 
         <Stats />
 
-        <CTA />
+        <CTA about={about} />
       </main>
 
       <Footer />

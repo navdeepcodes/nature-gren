@@ -46,6 +46,7 @@ export default function HeroCarousel({
       }}
       className="relative w-full"
       tabIndex={0}
+      aria-label="Hero media carousel"
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft") scrollPrev();
 
@@ -60,14 +61,14 @@ export default function HeroCarousel({
         <div
           ref={emblaRef}
           className="
+            aspect-[4/5]
+            max-h-[680px]
             overflow-hidden
             rounded-[36px]
             border
             border-white/70
             bg-white
             shadow-[0_30px_70px_rgba(0,0,0,0.12)]
-            aspect-[4/5]
-            max-h-[680px]
           "
         >
           <div className="flex">

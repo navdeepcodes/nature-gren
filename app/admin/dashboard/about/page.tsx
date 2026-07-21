@@ -2,85 +2,68 @@
 
 import { useEffect, useState } from "react";
 
-import { useAbout } from "./useAbout";
+import DashboardHeader from "@/components/admin/DashboardHeader";
+import AboutForm from "@/components/admin/about/AboutForm";
 
-import AboutHeroSection from "@/components/admin/about/AboutHeroSection";
-import AboutStorySection from "@/components/admin/about/AboutStorySection";
-import AboutVisionSection from "@/components/admin/about/AboutVisionSection";
-import AboutMissionSection from "@/components/admin/about/AboutMissionSection";
-import AboutFeaturesSection from "@/components/admin/about/AboutFeaturesSection";
-import AboutFooter from "@/components/admin/about/AboutFooter";
+import {
+  About,
+  getAbout,
+} from "@/lib/cms/about";
 
 export default function AboutPage() {
-  const {
-    about,
-    loading,
-    saving,
-    save,
+  const [about, setAbout] =
+    useState<About | null>(null);
 
-    features,
-    setFeatures,
-  } = useAbout();
+  const [loading, setLoading] =
+    useState(true);
 
-  const [form, setForm] = useState<any>(null);
+  async function loadAbout() {
+    try {
+      setLoading(true);
 
-  useEffect(() => {
-    if (about) {
-      setForm(about);
+      const data = await getAbout();
+
+      console.log("About Loaded:", data);
+
+      setAbout(data);
+    } catch (error: any) {
+      console.error("========== ABOUT ERROR ==========");
+      console.error(error);
+      console.error("Message:", error?.message);
+      console.error("Details:", error?.details);
+      console.error("Hint:", error?.hint);
+      console.error("Code:", error?.code);
+      console.error("================================");
+    } finally {
+      setLoading(false);
     }
-  }, [about]);
-
-  if (loading || !form) {
-    return (
-      <div className="flex h-72 items-center justify-center">
-        <p className="text-gray-500">
-          Loading About Page...
-        </p>
-      </div>
-    );
   }
 
+  useEffect(() => {
+    loadAbout();
+  }, []);
+
   return (
-    <div className="mx-auto max-w-6xl space-y-8 pb-20">
-      <div>
-        <h1 className="font-serif text-5xl text-[#1f2b1d]">
-          About Page
-        </h1>
-
-        <p className="mt-3 text-gray-500">
-          Manage your About page content.
-        </p>
-      </div>
-
-      <AboutHeroSection
-        data={form}
-        onChange={setForm}
+    <>
+      <DashboardHeader
+        title="About"
+        description="Manage the About page."
       />
 
-      <AboutStorySection
-        data={form}
-        onChange={setForm}
-      />
-
-      <AboutVisionSection
-        data={form}
-        onChange={setForm}
-      />
-
-      <AboutMissionSection
-        data={form}
-        onChange={setForm}
-      />
-
-      <AboutFeaturesSection
-        features={features}
-        onChange={setFeatures}
-      />
-
-      <AboutFooter
-        saving={saving}
-        onSave={() => save(form)}
-      />
-    </div>
+      {loading ? (
+        <div className="rounded-[32px] border border-[#ebe7df] bg-white p-20 text-center">
+          Loading...
+        </div>
+      ) : about ? (
+        <AboutForm
+          about={about}
+          onSaved={loadAbout}
+        />
+      ) : (
+        <div className="rounded-[32px] border border-[#ebe7df] bg-white p-20 text-center">
+          No About content found.
+        </div>
+      )}
+    </>
   );
 }

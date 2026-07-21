@@ -5,8 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Container from "@/components/layout/Container";
+import { About } from "@/lib/cms/about";
 
-export default function Hero() {
+interface HeroProps {
+  about: About;
+}
+
+export default function Hero({ about }: HeroProps) {
   return (
     <section className="relative overflow-hidden pt-32 pb-24">
       <Container>
@@ -17,24 +22,18 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: .7 }}
+            transition={{ duration: 0.7 }}
           >
             <span className="rounded-full bg-[#edf6e8] px-5 py-2 text-sm font-semibold text-[#3d6b36]">
               ABOUT NATUREGREN
             </span>
 
-            <h1 className="mt-8 font-serif text-5xl leading-tight text-[var(--text)] md:text-6xl xl:text-7xl">
-              Sustainability
-              <br />
-              Crafted Into
-              <br />
-              Every Thread
+            <h1 className="mt-8 font-serif text-5xl leading-tight text-[var(--text)] md:text-6xl xl:text-7xl whitespace-pre-line">
+              {about.hero_title}
             </h1>
 
             <p className="mt-8 max-w-xl text-lg leading-9 text-[var(--text-muted)]">
-              NatureGren creates premium handcrafted jute products that
-              combine timeless craftsmanship, modern design and genuine
-              environmental responsibility.
+              {about.hero_subtitle}
             </p>
 
             <div className="mt-12 flex gap-5">
@@ -59,12 +58,12 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: .7 }}
+            transition={{ duration: 0.7 }}
             className="relative"
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[36px] shadow-2xl">
               <Image
-                src="/images/about/about-hero.jpg"
+                src={about.hero_image || "/images/about/about-hero.jpg"}
                 alt="NatureGren"
                 fill
                 className="object-cover"

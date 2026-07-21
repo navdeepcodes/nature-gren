@@ -41,17 +41,17 @@ export default function Map() {
                   </h3>
 
                   <p className="mt-2 leading-7 text-[var(--text-muted)]">
-                    Bengaluru,
+                    Biratnagar,
                     <br />
-                    Karnataka,
+                    Koshi Province,
                     <br />
-                    India
+                    Nepal
                   </p>
                 </div>
               </div>
 
               <a
-                href="https://maps.google.com"
+                href="https://www.google.com/maps/search/?api=1&query=Biratnagar,+Koshi+Province,+Nepal"
                 target="_blank"
                 rel="noreferrer"
                 className="
@@ -79,7 +79,7 @@ export default function Map() {
           <div className="overflow-hidden rounded-[32px] shadow-xl">
             <iframe
               title="NatureGren Location"
-              src="https://www.google.com/maps?q=Bengaluru,Karnataka&output=embed"
+              src="https://www.google.com/maps?q=Biratnagar,Koshi,Nepal&output=embed"
               className="h-[520px] w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

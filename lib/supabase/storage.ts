@@ -6,9 +6,9 @@ export async function uploadImage(
 ) {
   const supabase = createClient();
 
-  const extension = file.name.split(".").pop();
+  const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
 
-  const fileName = `${Date.now()}.${extension}`;
+  const fileName = `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
   const { data, error } = await supabase.storage
     .from(bucket)
@@ -19,7 +19,6 @@ export async function uploadImage(
 
   if (error) {
     console.error("Storage Upload Error:", error);
-
     throw new Error(error.message);
   }
 
@@ -39,7 +38,9 @@ export async function deleteImage(
   const supabase = createClient();
 
   try {
-    const path = publicUrl.split(`/storage/v1/object/public/${bucket}/`)[1];
+    const path = publicUrl.split(
+      `/storage/v1/object/public/${bucket}/`
+    )[1];
 
     if (!path) return;
 

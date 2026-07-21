@@ -16,7 +16,7 @@ const info = [
   {
     icon: Mail,
     title: "Email",
-    value: "naturegren001@gmail.com",
+    value: "contact@naturegren.com",
   },
   {
     icon: MapPin,
@@ -26,7 +26,7 @@ const info = [
   {
     icon: Clock,
     title: "Working Hours",
-    value: "Mon - Sat • 9:00 AM - 6:00 PM",
+    value: "24/7 Support",
   },
 ];
 

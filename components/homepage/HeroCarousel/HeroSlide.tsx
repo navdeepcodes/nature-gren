@@ -23,10 +23,12 @@ export default function HeroSlide({
           text-[#6d5b47]
         "
       >
-        No Image
+        No Media
       </div>
     );
   }
+
+  const isVideo = /\.(mp4|webm|mov|ogg)$/i.test(image);
 
   return (
     <motion.div
@@ -38,18 +40,28 @@ export default function HeroSlide({
       }}
       className="relative aspect-[4/5] w-full overflow-hidden"
     >
-      <Image
-        src={image}
-        alt={`NatureGren ${index + 1}`}
-        fill
-        priority={index === 0}
-        sizes="(max-width: 1024px) 100vw, 560px"
-        className="
-          object-cover
-          select-none
-        "
-        draggable={false}
-      />
+      {isVideo ? (
+        <video
+          src={image}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          controls={false}
+          className="h-full w-full object-cover select-none"
+        />
+      ) : (
+        <Image
+          src={image}
+          alt={`NatureGren ${index + 1}`}
+          fill
+          priority={index === 0}
+          sizes="(max-width: 1024px) 100vw, 560px"
+          className="object-cover select-none"
+          draggable={false}
+        />
+      )}
     </motion.div>
   );
 }
