@@ -22,12 +22,15 @@ export default function MultiImageUploader({
 }: MultiImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [images, setImages] = useState<string[]>(value);
+  const [media, setMedia] = useState<string[]>(value);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    setImages(value);
+    setMedia(value);
   }, [value]);
+
+  const isVideo = (url: string) =>
+    /\.(mp4|webm|mov|ogg)$/i.test(url);
 
   async function handleFiles(
     e: React.ChangeEvent<HTMLInputElement>
@@ -46,12 +49,12 @@ export default function MultiImageUploader({
         uploaded.push(url);
       }
 
-      const updatedImages = [...images, ...uploaded];
+      const updatedMedia = [...media, ...uploaded];
 
-      setImages(updatedImages);
-      onChange?.(updatedImages);
+      setMedia(updatedMedia);
+      onChange?.(updatedMedia);
     } catch (err) {
-      console.error("Image upload failed:", err);
+      console.error("Media upload failed:", err);
 
       if (err instanceof Error) {
         alert(err.message);
@@ -67,23 +70,23 @@ export default function MultiImageUploader({
     }
   }
 
-  async function removeImage(index: number) {
-    const image = images[index];
+  async function removeMedia(index: number) {
+    const item = media[index];
 
-    if (!image) return;
+    if (!item) return;
 
     try {
-      await deleteImage(bucket, image);
+      await deleteImage(bucket, item);
 
-      const updatedImages = images.filter(
+      const updatedMedia = media.filter(
         (_, i) => i !== index
       );
 
-      setImages(updatedImages);
-      onChange?.(updatedImages);
+      setMedia(updatedMedia);
+      onChange?.(updatedMedia);
     } catch (err) {
       console.error(err);
-      alert("Failed to delete image.");
+      alert("Failed to delete media.");
     }
   }
 
@@ -94,7 +97,7 @@ export default function MultiImageUploader({
         hidden
         multiple
         type="file"
-        accept="image/*"
+        accept="image/*,video/mp4,video/webm,video/quicktime,video/ogg"
         onChange={handleFiles}
       />
 
@@ -115,11 +118,12 @@ export default function MultiImageUploader({
         ) : (
           <>
             <ImagePlus size={18} />
-            Upload Images
+            Upload Media
           </>
         )}
       </button>
-            {images.length === 0 ? (
+
+      {media.length === 0 ? (
         <div className="flex h-72 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-[#faf9f6]">
           <ImagePlus
             size={42}
@@ -127,33 +131,44 @@ export default function MultiImageUploader({
           />
 
           <h3 className="font-medium text-[#1f2b1d]">
-            No Hero Images
+            No Hero Media
           </h3>
 
           <p className="mt-2 text-center text-sm text-gray-500">
-            Upload one or more images to create
+            Upload one or more images or MP4 videos
             <br />
-            your homepage carousel.
+            to create your homepage carousel.
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {images.map((image, index) => (
+          {media.map((item, index) => (
             <div
-              key={`${image}-${index}`}
+              key={`${item}-${index}`}
               className="group overflow-hidden rounded-2xl border border-[#ebe7df] bg-white shadow-sm transition hover:shadow-lg"
             >
-              <div className="relative aspect-[16/10]">
-                <Image
-                  src={image}
-                  alt={`Hero ${index + 1}`}
-                  fill
-                  className="object-cover transition duration-300 group-hover:scale-105"
-                />
+              <div className="relative aspect-[16/10] bg-black">
+                {isVideo(item) ? (
+                  <video
+                    src={item}
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                  />
+                ) : (
+                  <Image
+                    src={item}
+                    alt={`Hero ${index + 1}`}
+                    fill
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                  />
+                )}
 
                 <button
                   type="button"
-                  onClick={() => removeImage(index)}
+                  onClick={() => removeMedia(index)}
                   className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-lg transition group-hover:opacity-100 hover:bg-red-600"
                 >
                   <Trash2 size={18} />
@@ -163,7 +178,9 @@ export default function MultiImageUploader({
               <div className="flex items-center justify-between px-4 py-3">
                 <div>
                   <p className="font-medium text-[#1f2b1d]">
-                    Image {index + 1}
+                    {isVideo(item)
+                      ? `Video ${index + 1}`
+                      : `Image ${index + 1}`}
                   </p>
 
                   <p className="text-xs text-gray-500">
@@ -180,14 +197,14 @@ export default function MultiImageUploader({
         </div>
       )}
 
-      {images.length > 0 && (
+      {media.length > 0 && (
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={uploading}
           className="w-full rounded-xl border border-dashed border-[#2E4B2C] py-4 font-medium text-[#2E4B2C] transition hover:bg-[#edf4eb]"
         >
-          + Add More Images
+          + Add More Media
         </button>
       )}
     </div>

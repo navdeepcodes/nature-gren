@@ -1,3 +1,5 @@
+import imageCompression from "browser-image-compression";
+
 import { createClient } from "./client";
 
 export async function uploadImage(
@@ -6,14 +8,27 @@ export async function uploadImage(
 ) {
   const supabase = createClient();
 
-  const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
+  let uploadFile: File = file;
+
+  // Compress images only
+  if (file.type.startsWith("image/")) {
+    uploadFile = await imageCompression(file, {
+      maxSizeMB: 0.4,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+      initialQuality: 0.85,
+    });
+  }
+
+  const extension =
+    file.name.split(".").pop()?.toLowerCase() ?? "";
 
   const fileName = `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
   const { data, error } = await supabase.storage
     .from(bucket)
-    .upload(fileName, file, {
-      cacheControl: "3600",
+    .upload(fileName, uploadFile, {
+      cacheControl: "31536000",
       upsert: true,
     });
 

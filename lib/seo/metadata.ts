@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 
 export const SITE = {
   name: "NatureGren",
+
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
     "https://naturegren.com",
 
-  title: "NatureGren | Premium Handcrafted Jute Products",
+  // Browser tab title
+  title: "NatureGren · Inspired by Nature",
 
   description:
     "Discover premium handcrafted eco-friendly jute products made with sustainability, craftsmanship, and timeless design. Shop rugs, baskets, storage, décor, and lifestyle essentials.",

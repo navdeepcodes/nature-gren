@@ -29,25 +29,22 @@ export default function HeroSlide({
   }
 
   const isVideo = /\.(mp4|webm|mov|ogg)$/i.test(image);
+  const isFirst = index === 0;
 
   return (
     <motion.div
-      whileHover={{
-        scale: 1.015,
-      }}
-      transition={{
-        duration: 0.35,
-      }}
+      whileHover={{ scale: 1.015 }}
+      transition={{ duration: 0.35 }}
       className="relative aspect-[4/5] w-full overflow-hidden"
     >
       {isVideo ? (
         <video
           src={image}
-          autoPlay
+          autoPlay={isFirst}
           muted
           loop
           playsInline
-          preload="metadata"
+          preload={isFirst ? "auto" : "metadata"}
           controls={false}
           className="h-full w-full object-cover select-none"
         />
@@ -56,8 +53,10 @@ export default function HeroSlide({
           src={image}
           alt={`NatureGren ${index + 1}`}
           fill
-          priority={index === 0}
-          sizes="(max-width: 1024px) 100vw, 560px"
+          priority={isFirst}
+          fetchPriority={isFirst ? "high" : "auto"}
+          loading={isFirst ? "eager" : "lazy"}
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 60vw, 560px"
           className="object-cover select-none"
           draggable={false}
         />

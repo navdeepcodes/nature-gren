@@ -9,7 +9,7 @@ export default function Logo() {
       <span
         className="
           font-serif
-          text-[34px]
+          text-[40px]
           font-semibold
           tracking-tight
           text-[var(--primary)]
@@ -21,13 +21,14 @@ export default function Logo() {
       <span
         className="
           mt-1
-          text-[11px]
+          text-[12px]
           uppercase
           tracking-[0.28em]
+          font-medium
           text-[var(--text-muted)]
         "
       >
-        Handcrafted Jute
+        Inspired by Nature
       </span>
     </Link>
   );

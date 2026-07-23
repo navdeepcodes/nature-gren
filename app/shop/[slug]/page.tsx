@@ -54,28 +54,78 @@ export default async function ProductPage({
     process.env.NEXT_PUBLIC_SITE_URL ??
     "https://naturegren.com";
 
+  const productUrl = `${baseUrl}/shop/${product.slug}`;
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
 
+    "@id": `${productUrl}#product`,
+
     name: product.name,
+
+    description:
+      product.description ??
+      "Premium handcrafted sustainable jute product by NatureGren.",
 
     image: product.image_url
       ? [product.image_url]
       : [],
 
-    description:
-      product.description ??
-      "Premium handcrafted jute product.",
+    url: productUrl,
+
+    sku: product.sku ?? undefined,
+
+    category: product.category?.name,
 
     brand: {
       "@type": "Brand",
       name: "NatureGren",
     },
 
-    category: product.category?.name,
+    manufacturer: {
+      "@type": "Organization",
+      name: "NatureGren",
+    },
 
-    url: `${baseUrl}/shop/${product.slug}`,
+    isFamilyFriendly: true,
+
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": productUrl,
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Shop",
+        item: `${baseUrl}/shop`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.category?.name ?? "Products",
+        item: `${baseUrl}/shop`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
   };
 
   return (
@@ -89,6 +139,13 @@ export default async function ProductPage({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(productSchema),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema),
           }}
         />
 

@@ -34,12 +34,36 @@ const organizationSchema = {
   description: SITE.description,
 
   sameAs: [
-    // Add your real social URLs here
+    // Add your official social URLs when available
     // "https://www.facebook.com/naturegren",
     // "https://www.instagram.com/naturegren",
     // "https://www.linkedin.com/company/naturegren",
     // "https://www.pinterest.com/naturegren",
   ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+
+  name: SITE.name,
+
+  url: SITE.url,
+
+  description: SITE.description,
+
+  inLanguage: "en-US",
+
+  publisher: {
+    "@type": "Organization",
+    name: SITE.name,
+  },
+
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE.url}/shop?search={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({
@@ -56,11 +80,16 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
       </head>
 
-      <body
-        className={`${inter.variable} ${cormorant.variable}`}
-      >
+      <body className={`${inter.variable} ${cormorant.variable}`}>
         <CartProvider>{children}</CartProvider>
       </body>
     </html>
