@@ -14,6 +14,7 @@
   "/api/search/route": "app/api/search/route.js",
   "/cart/page": "app/cart/page.js",
   "/contact/page": "app/contact/page.js",
+  "/icon.png/route": "app/icon.png/route.js",
   "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
   "/opengraph-image/route": "app-edge-has-no-entrypoint",
   "/page": "app/page.js",

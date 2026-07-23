@@ -17,24 +17,44 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = generateMetadata();
+export const metadata: Metadata = {
+  ...generateMetadata(),
+
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
+};
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE.url}#organization`,
 
   name: SITE.name,
-
   url: SITE.url,
 
-  logo: `${SITE.url}/logo.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE.url}/logo.png`,
+    width: 512,
+    height: 512,
+  },
 
-  image: `${SITE.url}${SITE.image}`,
+  image: {
+    "@type": "ImageObject",
+    url: `${SITE.url}/logo.png`,
+    width: 512,
+    height: 512,
+  },
 
   description: SITE.description,
 
   sameAs: [
-    // Add your official social URLs when available
     // "https://www.facebook.com/naturegren",
     // "https://www.instagram.com/naturegren",
     // "https://www.linkedin.com/company/naturegren",
@@ -45,18 +65,15 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE.url}#website`,
 
   name: SITE.name,
-
   url: SITE.url,
-
   description: SITE.description,
-
   inLanguage: "en-US",
 
   publisher: {
-    "@type": "Organization",
-    name: SITE.name,
+    "@id": `${SITE.url}#organization`,
   },
 
   potentialAction: {
