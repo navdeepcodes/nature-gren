@@ -4,15 +4,17 @@ export default function Logo() {
   return (
     <Link
       href="/"
-      className="flex flex-col leading-none"
+      className="flex flex-col leading-none select-none"
     >
       <span
         className="
           font-serif
-          text-[40px]
           font-semibold
           tracking-tight
           text-[var(--primary)]
+          text-[30px]
+          sm:text-[34px]
+          lg:text-[40px]
         "
       >
         NatureGren
@@ -21,9 +23,11 @@ export default function Logo() {
       <span
         className="
           mt-1
-          text-[12px]
+          text-[10px]
+          sm:text-[11px]
+          lg:text-[12px]
           uppercase
-          tracking-[0.28em]
+          tracking-[0.26em]
           font-medium
           text-[var(--text-muted)]
         "

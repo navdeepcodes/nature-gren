@@ -20,24 +20,33 @@ export default function CategoryCard({
         group
         block
         overflow-hidden
-        rounded-[30px]
+        rounded-[22px]
+        lg:rounded-[30px]
         border
         border-[#E7DDD0]
         bg-[#F8F4EE]
-        shadow-[0_8px_24px_rgba(101,67,33,0.06)]
+        shadow-[0_6px_18px_rgba(101,67,33,0.05)]
         transition-all
         duration-300
-        hover:-translate-y-1.5
+        hover:-translate-y-1
         hover:shadow-[0_18px_40px_rgba(101,67,33,0.12)]
       "
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#F3EEE6]">
+      <div
+        className="
+          relative
+          aspect-square
+          lg:aspect-[4/3]
+          overflow-hidden
+          bg-[#F3EEE6]
+        "
+      >
         {image ? (
           <Image
             src={image}
             alt={title}
             fill
-            sizes="(max-width:768px)100vw,(max-width:1200px)50vw,33vw"
+            sizes="(max-width:640px)50vw,(max-width:1024px)50vw,33vw"
             className="
               object-cover
               transition-transform
@@ -46,22 +55,47 @@ export default function CategoryCard({
             "
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-sm text-[var(--text-muted)]">
+          <div className="flex h-full items-center justify-center text-xs text-[var(--text-muted)] md:text-sm">
             No Image
           </div>
         )}
       </div>
 
-      <div className="flex items-center justify-between border-t border-[#EEE5D8] bg-[#F8F4EE] px-6 py-5">
-        <h3 className="font-serif text-[1.4rem] text-[var(--text)]">
+      <div
+        className="
+          flex
+          items-center
+          justify-between
+          border-t
+          border-[#EEE5D8]
+          bg-[#F8F4EE]
+          px-3
+          py-3
+          sm:px-4
+          sm:py-4
+          lg:px-6
+          lg:py-5
+        "
+      >
+        <h3
+          className="
+            font-serif
+            text-[1rem]
+            leading-snug
+            text-[var(--text)]
+            sm:text-[1.15rem]
+            lg:text-[1.4rem]
+          "
+        >
           {title}
         </h3>
 
         <div
           className="
             flex
-            h-11
-            w-11
+            h-8
+            w-8
+            shrink-0
             items-center
             justify-center
             rounded-full
@@ -69,12 +103,19 @@ export default function CategoryCard({
             text-[var(--text)]
             transition-all
             duration-300
+            group-hover:translate-x-1
             group-hover:bg-[var(--primary)]
             group-hover:text-white
-            group-hover:translate-x-1
+            sm:h-9
+            sm:w-9
+            lg:h-11
+            lg:w-11
           "
         >
-          <ArrowRight size={18} />
+          <ArrowRight
+            size={14}
+            className="lg:h-[18px] lg:w-[18px]"
+          />
         </div>
       </div>
     </Link>

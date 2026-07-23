@@ -22,14 +22,12 @@ import type { SearchProduct } from "@/lib/search/products";
 export default function Navbar() {
   const { items } = useCart();
 
-  const [searchOpen, setSearchOpen] =
-    useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
 
-  const [products, setProducts] =
-    useState<SearchProduct[]>([]);
+  const [products, setProducts] = useState<SearchProduct[]>([]);
 
   const cartCount = items.reduce(
     (total, item) => total + item.quantity,
@@ -44,9 +42,7 @@ export default function Navbar() {
     async function loadProducts() {
       try {
         const response = await fetch("/api/search");
-
         const data = await response.json();
-
         setProducts(data);
       } catch (error) {
         console.error(error);
@@ -73,26 +69,32 @@ export default function Navbar() {
           <div
             className="
               flex
-              h-[88px]
+              h-[72px]
+              lg:h-[88px]
               items-center
               justify-between
             "
           >
             {/* Left */}
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 lg:gap-4">
               <button
-                onClick={() =>
-                  setMobileMenuOpen(true)
-                }
+                onClick={() => setMobileMenuOpen(true)}
                 className="
-                  lg:hidden
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
                   transition-colors
+                  hover:bg-black/5
                   hover:text-[var(--primary)]
+                  lg:hidden
                 "
                 aria-label="Open menu"
               >
-                <Menu size={22} />
+                <Menu size={21} strokeWidth={2} />
               </button>
 
               <Logo />
@@ -120,18 +122,23 @@ export default function Navbar() {
 
             {/* Right */}
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 lg:gap-6">
               <button
-                onClick={() =>
-                  setSearchOpen(true)
-                }
+                onClick={() => setSearchOpen(true)}
                 aria-label="Search"
                 className="
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
                   transition-colors
+                  hover:bg-black/5
                   hover:text-[var(--primary)]
                 "
               >
-                <Search size={20} />
+                <Search size={20} strokeWidth={2} />
               </button>
 
               <Link
@@ -139,27 +146,34 @@ export default function Navbar() {
                 aria-label="Cart"
                 className="
                   relative
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
                   transition-colors
+                  hover:bg-black/5
                   hover:text-[var(--primary)]
                 "
               >
-                <ShoppingBag size={20} />
+                <ShoppingBag size={20} strokeWidth={2} />
 
                 {cartCount > 0 && (
                   <span
                     className="
                       absolute
-                      -right-2
-                      -top-2
+                      right-1
+                      top-1
                       flex
-                      h-5
-                      min-w-[20px]
+                      h-[18px]
+                      min-w-[18px]
                       items-center
                       justify-center
                       rounded-full
                       bg-[var(--primary)]
                       px-1
-                      text-[10px]
+                      text-[9px]
                       font-bold
                       text-white
                     "

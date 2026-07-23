@@ -7,24 +7,37 @@ export default async function Categories() {
   const categories = await getHomepageCategories();
 
   return (
-    <section className="py-24">
+    <section className="py-16 md:py-20 lg:py-24">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-sm font-medium uppercase tracking-[0.25em] text-[var(--primary)]">
+          <span className="text-xs font-medium uppercase tracking-[0.28em] text-[var(--primary)] md:text-sm">
             Collections
           </span>
 
-          <h2 className="mt-4 font-serif text-4xl leading-tight text-[var(--text)] md:text-5xl lg:text-6xl">
+          <h2 className="mt-3 font-serif text-3xl leading-tight text-[var(--text)] sm:text-4xl md:text-5xl lg:text-6xl">
             Shop by Category
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[var(--text-muted)]">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--text-muted)] md:mt-6 md:text-lg md:leading-8">
             Discover handcrafted sustainable jute collections designed
             for everyday living, gifting, and premium business needs.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div
+          className="
+            mt-10
+            grid
+            grid-cols-2
+            gap-4
+            sm:gap-5
+            md:mt-14
+            md:gap-6
+            lg:mt-16
+            lg:grid-cols-3
+            lg:gap-8
+          "
+        >
           {categories.map((category) => (
             <CategoryCard
               key={category.id}
