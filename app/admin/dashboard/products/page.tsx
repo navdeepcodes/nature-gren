@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Upload } from "lucide-react";
 
 import ProductModal from "@/components/admin/products/ProductModal";
 import ProductTable from "@/components/admin/products/ProductTable";
 import DeleteProductDialog from "@/components/admin/products/DeleteProductDialog";
+
+import BulkImportModal from "@/components/admin/products/bulk-import/BulkImportModal";
 
 import {
   deleteProduct,
@@ -26,6 +28,8 @@ export default function ProductsPage() {
   const [products, setProducts] = useState<ProductWithCategory[]>([]);
 
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [bulkImportOpen, setBulkImportOpen] = useState(false);
 
   const [selectedProduct, setSelectedProduct] =
     useState<ProductWithCategory | null>(null);
@@ -56,19 +60,20 @@ export default function ProductsPage() {
 
   function handleAdd() {
     setSelectedProduct(null);
-
     setModalOpen(true);
+  }
+
+  function handleBulkImport() {
+    setBulkImportOpen(true);
   }
 
   function handleEdit(product: ProductWithCategory) {
     setSelectedProduct(product);
-
     setModalOpen(true);
   }
 
   function handleDelete(product: ProductWithCategory) {
     setSelectedProduct(product);
-
     setDeleteOpen(true);
   }
 
@@ -81,7 +86,6 @@ export default function ProductsPage() {
       await deleteProduct(selectedProduct.id);
 
       setDeleteOpen(false);
-
       setSelectedProduct(null);
 
       await loadProducts();
@@ -97,8 +101,6 @@ export default function ProductsPage() {
   return (
     <>
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
-
         <div className="mb-10 flex items-center justify-between">
           <div>
             <h1 className="font-serif text-5xl text-[#1f2b1d]">
@@ -110,14 +112,23 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <button
-            onClick={handleAdd}
-            className="inline-flex h-14 items-center gap-2 rounded-xl bg-[#2E4B2C] px-7 text-white transition hover:bg-[#243d23]"
-          >
-            <Plus size={18} />
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleBulkImport}
+              className="inline-flex h-14 items-center gap-2 rounded-xl border border-[#2E4B2C] px-7 font-medium text-[#2E4B2C] transition hover:bg-[#edf4eb]"
+            >
+              <Upload size={18} />
+              Bulk Import
+            </button>
 
-            Add Product
-          </button>
+            <button
+              onClick={handleAdd}
+              className="inline-flex h-14 items-center gap-2 rounded-xl bg-[#2E4B2C] px-7 text-white transition hover:bg-[#243d23]"
+            >
+              <Plus size={18} />
+              Add Product
+            </button>
+          </div>
         </div>
 
         {loading ? (
@@ -139,11 +150,16 @@ export default function ProductsPage() {
         open={modalOpen}
         onClose={() => {
           setModalOpen(false);
-
           setSelectedProduct(null);
         }}
         onSaved={loadProducts}
         product={selectedProduct}
+      />
+
+      <BulkImportModal
+        open={bulkImportOpen}
+        onClose={() => setBulkImportOpen(false)}
+        onSaved={loadProducts}
       />
 
       <DeleteProductDialog
@@ -152,7 +168,6 @@ export default function ProductsPage() {
         productName={selectedProduct?.name}
         onClose={() => {
           setDeleteOpen(false);
-
           setSelectedProduct(null);
         }}
         onDelete={confirmDelete}

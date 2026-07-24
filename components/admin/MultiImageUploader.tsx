@@ -42,14 +42,15 @@ export default function MultiImageUploader({
     try {
       setUploading(true);
 
-      const uploaded: string[] = [];
+      const uploaded = await Promise.all(
+        Array.from(files).map((file) =>
+          uploadImage(bucket, file)
+        )
+      );
 
-      for (const file of Array.from(files)) {
-        const url = await uploadImage(bucket, file);
-        uploaded.push(url);
-      }
-
-      const updatedMedia = [...media, ...uploaded];
+      const updatedMedia = [
+        ...new Set([...media, ...uploaded]),
+      ];
 
       setMedia(updatedMedia);
       onChange?.(updatedMedia);
@@ -162,6 +163,7 @@ export default function MultiImageUploader({
                     src={item}
                     alt={`Hero ${index + 1}`}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover transition duration-300 group-hover:scale-105"
                   />
                 )}
