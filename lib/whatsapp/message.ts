@@ -29,7 +29,10 @@ Could you please provide more information about this product, including its pric
 
 Thank you. I look forward to your response.`;
 
-  return `https://wa.me/${PHONE}?text=${encodeURIComponent(
-    message
-  )}`;
+  const params = new URLSearchParams({
+    phone: PHONE,
+    text: message,
+  });
+
+  return `https://api.whatsapp.com/send?${params.toString()}`;
 }
