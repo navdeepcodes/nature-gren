@@ -1,4 +1,4 @@
-const PHONE = "917019493960";
+const PHONE = "+1 (469) 350-6400";
 
 export interface WhatsAppProduct {
   name: string;
@@ -17,7 +17,7 @@ export function createWhatsAppLink(
 
   const message = `Hello NatureGren,
 
-I'm interested in purchasing the following product:
+I'm interested in the following product:
 
 Product: ${product.name}
 Quantity: ${quantity}
