@@ -1,4 +1,4 @@
-const PHONE = "+1 (469) 350-6400";
+const PHONE = "14693506400";
 
 export interface WhatsAppProduct {
   name: string;
