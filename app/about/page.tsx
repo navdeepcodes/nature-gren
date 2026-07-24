@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/homepage/Footer";
+import Certification from "@/components/homepage/Certification";
 import AnimatedBackground from "@/components/background/AnimatedBackground";
 
 import Hero from "@/components/about/Hero";
@@ -35,6 +36,8 @@ export default async function AboutPage() {
         <Stats />
 
         <CTA about={about} />
+
+        <Certification />
       </main>
 
       <Footer />

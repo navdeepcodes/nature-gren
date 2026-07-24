@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import Navbar from "@/components/layout/Navbar";
+import Certification from "@/components/homepage/Certification";
 import Footer from "@/components/homepage/Footer";
 import Container from "@/components/layout/Container";
 
@@ -129,7 +130,6 @@ Thank you. I look forward to your response`;
                 className="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-8 py-4 font-medium text-white transition hover:opacity-90"
               >
                 <ArrowLeft size={18} />
-
                 Explore Products
               </Link>
             </div>
@@ -171,10 +171,7 @@ Thank you. I look forward to your response`;
                           <div className="flex items-center rounded-full border border-[var(--border)]">
                             <button
                               onClick={() =>
-                                updateQuantity(
-                                  item.id,
-                                  item.quantity - 1
-                                )
+                                updateQuantity(item.id, item.quantity - 1)
                               }
                               className="px-4 py-3 transition hover:bg-[#f4efe8]"
                             >
@@ -187,10 +184,7 @@ Thank you. I look forward to your response`;
 
                             <button
                               onClick={() =>
-                                updateQuantity(
-                                  item.id,
-                                  item.quantity + 1
-                                )
+                                updateQuantity(item.id, item.quantity + 1)
                               }
                               className="px-4 py-3 transition hover:bg-[#f4efe8]"
                             >
@@ -199,13 +193,10 @@ Thank you. I look forward to your response`;
                           </div>
 
                           <button
-                            onClick={() =>
-                              removeItem(item.id)
-                            }
+                            onClick={() => removeItem(item.id)}
                             className="inline-flex items-center gap-2 text-sm font-medium text-red-500 transition hover:text-red-700"
                           >
                             <Trash2 size={17} />
-
                             Remove
                           </button>
                         </div>
@@ -232,7 +223,6 @@ Thank you. I look forward to your response`;
                     className="flex w-full items-center justify-center gap-3 rounded-full bg-[#25D366] px-6 py-4 font-semibold text-white transition hover:brightness-95"
                   >
                     <MessageCircle size={20} />
-
                     Send Inquiry on WhatsApp
                   </button>
 
@@ -248,6 +238,8 @@ Thank you. I look forward to your response`;
           )}
         </Container>
       </main>
+
+      <Certification />
 
       <Footer />
     </>

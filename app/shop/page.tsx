@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import AnimatedBackground from "@/components/background/AnimatedBackground";
+import Certification from "@/components/homepage/Certification";
 import Footer from "@/components/homepage/Footer";
 
 import Container from "@/components/layout/Container";
@@ -33,6 +34,8 @@ export default async function ShopPage() {
             />
           </Container>
         </section>
+
+        <Certification />
       </main>
 
       <Footer />

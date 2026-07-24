@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import AnimatedBackground from "@/components/background/AnimatedBackground";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/homepage/Footer";
+import Certification from "@/components/homepage/Certification";
 import Container from "@/components/layout/Container";
 
 import ProductBreadcrumb from "@/components/product/ProductBreadcrumb";
@@ -190,6 +191,8 @@ export default async function ProductPage({
             <RelatedProducts />
           </Container>
         </section>
+
+        <Certification />
       </main>
 
       <Footer />

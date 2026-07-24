@@ -9,6 +9,7 @@ import Story from "@/components/homepage/Story";
 import FeaturedProducts from "@/components/homepage/FeaturedProducts";
 import CTA from "@/components/homepage/CTA";
 import Newsletter from "@/components/homepage/Newsletter";
+import Certification from "@/components/homepage/Certification";
 import Footer from "@/components/homepage/Footer";
 
 import { getHomepageHero } from "@/lib/homepage/hero";
@@ -36,6 +37,8 @@ export default async function HomePage() {
         <CTA />
 
         <Newsletter />
+
+        <Certification />
       </main>
 
       <Footer />
