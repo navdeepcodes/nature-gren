@@ -24,6 +24,9 @@ export default function ContactForm() {
     }, 1200);
   }
 
+  const inputClass =
+    "h-12 w-full rounded-xl border border-[#ddd] bg-white px-4 text-[var(--text)] placeholder:text-[var(--text-muted)] placeholder:opacity-100 appearance-none outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10 md:h-14 md:px-5";
+
   return (
     <section
       id="contact-form"
@@ -75,36 +78,36 @@ export default function ContactForm() {
               <input
                 placeholder="Full Name"
                 required
-                className="h-12 rounded-xl border px-4 outline-none transition focus:border-[var(--primary)] md:h-14 md:px-5"
+                className={inputClass}
               />
 
               <input
                 type="email"
                 placeholder="Email Address"
                 required
-                className="h-12 rounded-xl border px-4 outline-none transition focus:border-[var(--primary)] md:h-14 md:px-5"
+                className={inputClass}
               />
 
               <input
                 placeholder="Phone Number"
-                className="h-12 rounded-xl border px-4 outline-none transition focus:border-[var(--primary)] md:h-14 md:px-5"
+                className={inputClass}
               />
 
               <input
                 placeholder="Company"
-                className="h-12 rounded-xl border px-4 outline-none transition focus:border-[var(--primary)] md:h-14 md:px-5"
+                className={inputClass}
               />
             </div>
 
             <input
               placeholder="Subject"
-              className="mt-4 h-12 w-full rounded-xl border px-4 outline-none transition focus:border-[var(--primary)] md:mt-6 md:h-14 md:px-5"
+              className={`${inputClass} mt-4 md:mt-6`}
             />
 
             <textarea
               rows={6}
               placeholder="Tell us about your requirements..."
-              className="mt-4 w-full rounded-xl border p-4 outline-none transition focus:border-[var(--primary)] md:mt-6 md:p-5"
+              className="mt-4 w-full rounded-xl border border-[#ddd] bg-white p-4 text-[var(--text)] placeholder:text-[var(--text-muted)] placeholder:opacity-100 appearance-none outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10 md:mt-6 md:p-5"
             />
 
             <button

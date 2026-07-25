@@ -44,6 +44,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#f8f4ee",
 };
 
 const organizationSchema = {
@@ -111,6 +112,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="color-scheme" content="light" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

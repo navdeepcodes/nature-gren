@@ -14,23 +14,25 @@ export default function ContactPage() {
     <>
       <AnimatedBackground />
 
-      <Navbar />
+      <div className="relative z-10">
+        <Navbar />
 
-      <main className="relative z-10">
-        <Hero />
+        <main>
+          <Hero />
 
-        <ContactInfo />
+          <ContactInfo />
 
-        <ContactForm />
+          <ContactForm />
 
-        <Map />
+          <Map />
 
-        <FAQ />
+          <FAQ />
 
-        <CTA />
-      </main>
+          <CTA />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }
