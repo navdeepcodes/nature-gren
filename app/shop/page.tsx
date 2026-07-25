@@ -26,8 +26,8 @@ export default async function ShopPage() {
       <main className="relative z-10">
         <ShopHeader />
 
-        <section className="pt-4 pb-24 lg:pt-8 lg:pb-32">
-          <Container>
+        <section className="pt-2 pb-16 md:pt-4 md:pb-24 lg:pt-8 lg:pb-32">
+          <Container className="max-w-[1440px]">
             <ShopClient
               products={products}
               categories={categories}

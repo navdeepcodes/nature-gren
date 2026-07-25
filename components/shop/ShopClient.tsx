@@ -17,8 +17,7 @@ export default function ShopClient({
   products,
   categories,
 }: ShopClientProps) {
-  const [selectedCategory, setSelectedCategory] =
-    useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const filteredProducts = useMemo(() => {
     if (!selectedCategory) {
@@ -26,13 +25,12 @@ export default function ShopClient({
     }
 
     return products.filter(
-      (product) =>
-        product.category?.id === selectedCategory
+      (product) => product.category?.id === selectedCategory
     );
   }, [products, selectedCategory]);
 
   return (
-    <>
+    <div className="space-y-8 md:space-y-10">
       <ShopFilters
         categories={categories}
         selectedCategory={selectedCategory}
@@ -41,6 +39,6 @@ export default function ShopClient({
       />
 
       <ProductGrid products={filteredProducts} />
-    </>
+    </div>
   );
 }
