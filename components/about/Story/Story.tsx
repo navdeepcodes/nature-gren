@@ -11,15 +11,15 @@ export default function Story({ about }: StoryProps) {
   return (
     <section className="bg-[#fcfaf7] py-24 lg:py-32">
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-[1.15fr_1fr]">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[32px] shadow-[0_24px_80px_rgba(0,0,0,0.08)]">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.25fr_1fr]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[32px] shadow-[0_24px_80px_rgba(0,0,0,0.08)]">
             <Image
               src={about.story_image || "/images/about/story.jpg"}
               alt="NatureGren artisans"
               fill
-              className="object-cover object-center transition-transform duration-700 hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 55vw"
               priority
+              sizes="(max-width: 1024px) 100vw, 60vw"
+              className="object-cover object-right transition-transform duration-700 hover:scale-105"
             />
           </div>
 
