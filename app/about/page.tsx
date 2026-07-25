@@ -20,27 +20,29 @@ export default async function AboutPage() {
     <>
       <AnimatedBackground />
 
-      <Navbar />
+      <div className="relative z-10">
+        <Navbar />
 
-      <main className="relative z-10">
-        <Hero about={about} />
+        <main>
+          <Hero about={about} />
 
-        <Story about={about} />
+          <Story about={about} />
 
-        <WhyJute />
+          <WhyJute />
 
-        <Process />
+          <Process />
 
-        <Values />
+          <Values />
 
-        <Stats />
+          <Stats />
 
-        <CTA about={about} />
+          <CTA about={about} />
 
-        <Certification />
-      </main>
+          <Certification />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }
