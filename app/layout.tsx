@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 
 import "./globals.css";
@@ -20,14 +20,30 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   ...generateMetadata(),
 
+  metadataBase: new URL(SITE.url),
+
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/icon.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
     ],
+
     shortcut: "/favicon.ico",
     apple: "/icon.png",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 const organizationSchema = {
@@ -54,6 +70,8 @@ const organizationSchema = {
 
   description: SITE.description,
 
+  email: "info@naturegren.com",
+
   sameAs: [
     // "https://www.facebook.com/naturegren",
     // "https://www.instagram.com/naturegren",
@@ -69,7 +87,9 @@ const websiteSchema = {
 
   name: SITE.name,
   url: SITE.url,
+
   description: SITE.description,
+
   inLanguage: "en-US",
 
   publisher: {

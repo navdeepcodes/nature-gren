@@ -12,7 +12,7 @@ interface HeroProps {
 
 export default function Hero({ hero }: HeroProps) {
   return (
-    <section className="relative overflow-hidden py-20 lg:py-24">
+    <section className="relative overflow-hidden py-16 md:py-20 lg:py-24">
       <HeroBackground />
 
       <Container>
@@ -22,7 +22,7 @@ export default function Hero({ hero }: HeroProps) {
             z-10
             grid
             items-center
-            gap-12
+            gap-10
             lg:grid-cols-[1fr_1fr]
             lg:gap-16
           "
@@ -38,7 +38,7 @@ export default function Hero({ hero }: HeroProps) {
           />
 
           <div className="flex items-center justify-center lg:justify-end">
-            <div className="w-full max-w-[560px]">
+            <div className="w-full max-w-[480px] sm:max-w-[520px] lg:max-w-[560px]">
               <HeroCarousel
                 images={hero.image_urls ?? []}
               />

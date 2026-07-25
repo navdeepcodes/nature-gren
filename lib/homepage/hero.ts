@@ -39,16 +39,26 @@ export async function getHomepageHero(): Promise<HomepageHero> {
     .from("hero")
     .select("*")
     .limit(1)
-    .single();
+    .maybeSingle();
 
-  if (error) {
+  if (error || !data) {
     console.error("Hero query failed:", error);
     return fallbackHero;
   }
 
   return {
-    ...data,
-    image_urls: data.image_urls ?? [],
-    featured_product_id: data.featured_product_id ?? null,
+    id: data.id ?? fallbackHero.id,
+    title: data.title ?? fallbackHero.title,
+    accent: data.accent ?? fallbackHero.accent,
+    description: data.description ?? fallbackHero.description,
+    primary_button:
+      data.primary_button ?? fallbackHero.primary_button,
+    secondary_button:
+      data.secondary_button ?? fallbackHero.secondary_button,
+    image_urls: Array.isArray(data.image_urls)
+      ? data.image_urls
+      : [],
+    featured_product_id:
+      data.featured_product_id ?? null,
   };
 }

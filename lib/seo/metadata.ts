@@ -7,23 +7,25 @@ export const SITE = {
     process.env.NEXT_PUBLIC_SITE_URL ??
     "https://naturegren.com",
 
-  // Browser tab title
+  // Brand title (keep this exactly as the client wants)
   title: "NatureGren · Inspired by Nature",
 
   description:
-    "Discover premium handcrafted eco-friendly jute products made with sustainability, craftsmanship, and timeless design. Shop rugs, baskets, storage, décor, and lifestyle essentials.",
+    "Discover premium handcrafted jute rugs, baskets, bags, home décor and sustainable lifestyle products made from natural jute with timeless craftsmanship and eco-friendly materials.",
 
   keywords: [
     "NatureGren",
-    "Jute Products",
-    "Eco Friendly",
-    "Sustainable Living",
-    "Handcrafted",
-    "Natural Fiber",
-    "Jute Bags",
+    "Premium Jute Products",
+    "Handcrafted Jute",
     "Jute Rugs",
+    "Jute Bags",
     "Jute Baskets",
-    "Home Decor",
+    "Jute Home Decor",
+    "Sustainable Home Decor",
+    "Eco Friendly Products",
+    "Natural Fiber Products",
+    "Luxury Jute",
+    "Handmade Home Decor",
     "Organic Lifestyle",
   ],
 
@@ -67,11 +69,15 @@ export function generateMetadata({
   return {
     metadataBase: new URL(SITE.url),
 
+    applicationName: SITE.name,
+
     title: pageTitle,
 
     description: pageDescription,
 
     keywords: pageKeywords,
+
+    category: "Shopping",
 
     alternates: {
       canonical,
@@ -92,6 +98,8 @@ export function generateMetadata({
 
     openGraph: {
       type: "website",
+
+      locale: "en_US",
 
       url: canonical,
 

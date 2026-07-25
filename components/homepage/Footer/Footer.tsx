@@ -153,7 +153,7 @@ export default function Footer() {
         >
           <p>© 2026 NatureGren. All rights reserved.</p>
 
-          <p>Handcrafted with ❤️ in .</p>
+          <p>Handcrafted with ❤️ in Nepal .</p>
         </div>
       </Container>
     </footer>

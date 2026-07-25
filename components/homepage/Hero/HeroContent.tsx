@@ -47,7 +47,7 @@ export default function HeroContent({
         transition={{
           delay: 0.2,
         }}
-        className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#d8e5d0] bg-white/80 px-5 py-3 shadow-lg backdrop-blur-md"
+        className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#d8e5d0] bg-white/80 px-4 py-2.5 shadow-lg backdrop-blur-md sm:mb-8 sm:gap-3 sm:px-5 sm:py-3"
       >
         <div className="rounded-full bg-[#edf6e8] p-2">
           <Leaf
@@ -56,7 +56,7 @@ export default function HeroContent({
           />
         </div>
 
-        <span className="text-sm font-semibold tracking-wide text-[#3d6b36]">
+        <span className="text-xs font-semibold tracking-wide text-[#3d6b36] sm:text-sm">
           Sustainable • Handmade • Premium
         </span>
       </motion.div>
@@ -75,11 +75,11 @@ export default function HeroContent({
         transition={{
           delay: 0.3,
         }}
-        className="font-serif text-5xl font-semibold leading-[1.05] text-[var(--text)] md:text-6xl xl:text-7xl"
+        className="font-serif text-[2.7rem] font-semibold leading-[1.08] text-[var(--text)] sm:text-5xl md:text-6xl xl:text-7xl"
       >
         {data.title}
 
-        <span className="mt-4 block text-[var(--primary)]">
+        <span className="mt-3 block text-[var(--primary)] sm:mt-4">
           {data.accent}
         </span>
       </motion.h1>
@@ -88,12 +88,12 @@ export default function HeroContent({
 
       <motion.div
         initial={{ width: 0 }}
-        animate={{ width: 90 }}
+        animate={{ width: 80 }}
         transition={{
           delay: 0.5,
           duration: 0.6,
         }}
-        className="mt-8 h-[4px] rounded-full bg-[var(--primary)]"
+        className="mt-6 h-[4px] rounded-full bg-[var(--primary)] sm:mt-8"
       />
 
       {/* Description */}
@@ -110,7 +110,7 @@ export default function HeroContent({
         transition={{
           delay: 0.6,
         }}
-        className="mt-8 max-w-xl text-lg leading-9 text-[var(--text-muted)]"
+        className="mt-6 max-w-xl text-base leading-8 text-[var(--text-muted)] sm:mt-8 sm:text-lg sm:leading-9"
       >
         {data.description}
       </motion.p>
@@ -129,24 +129,30 @@ export default function HeroContent({
         transition={{
           delay: 0.8,
         }}
-        className="mt-12 flex flex-wrap gap-5"
+        className="mt-10 flex flex-wrap gap-3 sm:mt-12 sm:gap-5"
       >
         <Link
           href="/shop"
           className="
             inline-flex
-            h-14
+            h-12
             items-center
-            gap-3
+            gap-2
             rounded-full
             bg-[var(--primary)]
-            px-8
+            px-6
+            text-sm
+            font-medium
             text-white
             shadow-xl
             transition-all
             duration-300
             hover:-translate-y-1
             hover:shadow-2xl
+            sm:h-14
+            sm:gap-3
+            sm:px-8
+            sm:text-base
           "
         >
           {data.primaryButton}
@@ -158,19 +164,23 @@ export default function HeroContent({
           href="/about"
           className="
             inline-flex
-            h-14
+            h-12
             items-center
             rounded-full
             border
             border-[var(--border)]
             bg-white/80
-            px-8
+            px-6
+            text-sm
             font-medium
             backdrop-blur-md
             transition-all
             duration-300
             hover:bg-white
             hover:shadow-lg
+            sm:h-14
+            sm:px-8
+            sm:text-base
           "
         >
           {data.secondaryButton}
@@ -185,34 +195,34 @@ export default function HeroContent({
         transition={{
           delay: 1,
         }}
-        className="mt-16 flex gap-12"
+        className="mt-12 flex gap-8 sm:mt-16 sm:gap-12"
       >
         <div>
-          <h3 className="text-3xl font-bold text-[var(--primary)]">
+          <h3 className="text-2xl font-bold text-[var(--primary)] sm:text-3xl">
             100%
           </h3>
 
-          <p className="mt-1 text-sm text-[var(--text-muted)]">
+          <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
             Natural Jute
           </p>
         </div>
 
         <div>
-          <h3 className="text-3xl font-bold text-[var(--primary)]">
+          <h3 className="text-2xl font-bold text-[var(--primary)] sm:text-3xl">
             Eco
           </h3>
 
-          <p className="mt-1 text-sm text-[var(--text-muted)]">
+          <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
             Friendly
           </p>
         </div>
 
         <div>
-          <h3 className="text-3xl font-bold text-[var(--primary)]">
+          <h3 className="text-2xl font-bold text-[var(--primary)] sm:text-3xl">
             Hand
           </h3>
 
-          <p className="mt-1 text-sm text-[var(--text-muted)]">
+          <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
             Crafted
           </p>
         </div>
