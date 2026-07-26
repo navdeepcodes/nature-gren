@@ -68,7 +68,7 @@ export default function Footer() {
                 ["Home", "/"],
                 ["Shop", "/shop"],
                 ["About", "/about"],
-                ["Custom Orders", "/contact"],
+                ["Custom Orders", "/custom-orders"],
                 ["Contact", "/contact"],
               ].map(([label, href]) => (
                 <li key={label}>
@@ -80,7 +80,7 @@ export default function Footer() {
 
                     <ArrowUpRight
                       size={14}
-                      className="opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                      className="opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
                     />
                   </Link>
                 </li>
@@ -113,25 +113,27 @@ export default function Footer() {
 
             <div className="space-y-5 text-white/70">
               <a
-                href="https://maps.google.com/?q=Irving,Texas,75038"
+                href="https://maps.google.com/?q=Dallas,Texas,USA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-3 transition-colors duration-300 hover:text-white"
               >
-                <MapPin size={18} className="mt-1 shrink-0" />
+                <MapPin
+                  size={18}
+                  className="mt-1 shrink-0"
+                />
 
-                <p>
-                  Dallas
-                  <br />
-                  Irving, Texas 75038
-                </p>
+                <p>Dallas, Texas, USA</p>
               </a>
 
               <a
                 href="tel:+14693506400"
                 className="flex gap-3 transition-colors duration-300 hover:text-white"
               >
-                <Phone size={18} className="mt-1 shrink-0" />
+                <Phone
+                  size={18}
+                  className="mt-1 shrink-0"
+                />
 
                 <p>+1 (469) 350-6400</p>
               </a>
@@ -140,7 +142,10 @@ export default function Footer() {
                 href="mailto:contact@naturegren.com"
                 className="flex gap-3 transition-colors duration-300 hover:text-white"
               >
-                <Mail size={18} className="mt-1 shrink-0" />
+                <Mail
+                  size={18}
+                  className="mt-1 shrink-0"
+                />
 
                 <p>contact@naturegren.com</p>
               </a>
