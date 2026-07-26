@@ -20,213 +20,137 @@ export default function HeroContent({
 }: HeroContentProps) {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        x: -40,
-      }}
-      animate={{
-        opacity: 1,
-        x: 0,
-      }}
-      transition={{
-        duration: 0.7,
-      }}
+      initial={{ opacity: 0, x: -30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.65 }}
       className="relative max-w-2xl"
     >
       {/* Premium Badge */}
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.2,
-        }}
-        className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#d8e5d0] bg-white/80 px-4 py-2.5 shadow-lg backdrop-blur-md sm:mb-8 sm:gap-3 sm:px-5 sm:py-3"
-      >
-        <div className="rounded-full bg-[#edf6e8] p-2">
+      <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#d8e5d0] bg-white/85 px-5 py-3 shadow-md backdrop-blur-sm">
+        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#edf6e8]">
           <Leaf
             size={16}
-            className="text-[#3d6b36]"
+            className="text-[var(--primary)]"
           />
         </div>
 
-        <span className="text-xs font-semibold tracking-wide text-[#3d6b36] sm:text-sm">
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)] sm:text-sm">
           Sustainable • Handmade • Premium
         </span>
-      </motion.div>
+      </div>
 
       {/* Heading */}
 
-      <motion.h1
-        initial={{
-          opacity: 0,
-          y: 30,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.3,
-        }}
-        className="font-serif text-[2.7rem] font-semibold leading-[1.08] text-[var(--text)] sm:text-5xl md:text-6xl xl:text-7xl"
-      >
+      <h1 className="font-serif text-[2.8rem] font-semibold leading-[1.02] tracking-[-0.03em] text-[var(--text)] sm:text-5xl md:text-6xl xl:text-7xl">
         {data.title}
 
-        <span className="mt-3 block text-[var(--primary)] sm:mt-4">
+        <span className="mt-4 block text-[var(--primary)]">
           {data.accent}
         </span>
-      </motion.h1>
+      </h1>
 
-      {/* Divider */}
+      {/* Accent Line */}
 
-      <motion.div
-        initial={{ width: 0 }}
-        animate={{ width: 80 }}
-        transition={{
-          delay: 0.5,
-          duration: 0.6,
-        }}
-        className="mt-6 h-[4px] rounded-full bg-[var(--primary)] sm:mt-8"
-      />
+      <div className="mt-8 h-1 w-24 rounded-full bg-[var(--primary)]" />
 
       {/* Description */}
 
-      <motion.p
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.6,
-        }}
-        className="mt-6 max-w-xl text-base leading-8 text-[var(--text-muted)] sm:mt-8 sm:text-lg sm:leading-9"
-      >
+      <p className="mt-8 max-w-xl text-base leading-8 text-[var(--text-muted)] sm:text-lg sm:leading-9">
         {data.description}
-      </motion.p>
+      </p>
 
       {/* Buttons */}
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.8,
-        }}
-        className="mt-10 flex flex-wrap gap-3 sm:mt-12 sm:gap-5"
-      >
+      <div className="mt-12 flex flex-wrap gap-4">
         <Link
           href="/shop"
           className="
+            group
             inline-flex
-            h-12
+            h-14
             items-center
-            gap-2
+            gap-3
             rounded-full
             bg-[var(--primary)]
-            px-6
-            text-sm
+            px-8
+            text-base
             font-medium
             text-white
-            shadow-xl
+            shadow-lg
             transition-all
             duration-300
             hover:-translate-y-1
-            hover:shadow-2xl
-            sm:h-14
-            sm:gap-3
-            sm:px-8
-            sm:text-base
+            hover:shadow-xl
           "
         >
           {data.primaryButton}
 
-          <ArrowRight size={18} />
+          <ArrowRight
+            size={18}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
         </Link>
 
         <Link
           href="/about"
           className="
             inline-flex
-            h-12
+            h-14
             items-center
             rounded-full
             border
             border-[var(--border)]
             bg-white/80
-            px-6
-            text-sm
+            px-8
+            text-base
             font-medium
-            backdrop-blur-md
+            backdrop-blur-sm
             transition-all
             duration-300
+            hover:border-[var(--primary)]
             hover:bg-white
-            hover:shadow-lg
-            sm:h-14
-            sm:px-8
-            sm:text-base
+            hover:text-[var(--primary)]
+            hover:shadow-md
           "
         >
           {data.secondaryButton}
         </Link>
-      </motion.div>
+      </div>
 
-      {/* Stats */}
+      {/* Trust Metrics */}
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          delay: 1,
-        }}
-        className="mt-12 flex gap-8 sm:mt-16 sm:gap-12"
-      >
+      <div className="mt-16 grid grid-cols-3 gap-6 border-t border-[var(--border)] pt-8">
         <div>
-          <h3 className="text-2xl font-bold text-[var(--primary)] sm:text-3xl">
+          <h3 className="text-3xl font-bold text-[var(--primary)]">
             100%
           </h3>
 
-          <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
+          <p className="mt-2 text-sm text-[var(--text-muted)]">
             Natural Jute
           </p>
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-[var(--primary)] sm:text-3xl">
+          <h3 className="text-3xl font-bold text-[var(--primary)]">
             Eco
           </h3>
 
-          <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
+          <p className="mt-2 text-sm text-[var(--text-muted)]">
             Friendly
           </p>
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-[var(--primary)] sm:text-3xl">
+          <h3 className="text-3xl font-bold text-[var(--primary)]">
             Hand
           </h3>
 
-          <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
+          <p className="mt-2 text-sm text-[var(--text-muted)]">
             Crafted
           </p>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

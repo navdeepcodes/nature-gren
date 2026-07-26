@@ -5,12 +5,14 @@ import AnimatedBackground from "@/components/background/AnimatedBackground";
 import Hero from "@/components/homepage/Hero";
 import Features from "@/components/homepage/Features";
 import Categories from "@/components/homepage/Categories";
+import Manufacturing from "@/components/homepage/Manufacturing";
 import Story from "@/components/homepage/Story";
 import FeaturedProducts from "@/components/homepage/FeaturedProducts";
 import CTA from "@/components/homepage/CTA";
 import Newsletter from "@/components/homepage/Newsletter";
 import Certification from "@/components/homepage/Certification";
 import Footer from "@/components/homepage/Footer";
+import Legacy from "@/components/homepage/Legacy";
 
 import { getHomepageHero } from "@/lib/homepage/hero";
 
@@ -30,15 +32,19 @@ export default async function HomePage() {
 
         <Features />
 
-        <Story />
-
         <FeaturedProducts />
 
-        <CTA />
+        <Legacy />
+
+        <Manufacturing />
+
+        <Story />
+
+        <Certification />
 
         <Newsletter />
 
-        <Certification />
+        <CTA />
       </main>
 
       <Footer />

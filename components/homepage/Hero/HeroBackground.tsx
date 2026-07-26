@@ -5,29 +5,27 @@ import { motion } from "framer-motion";
 export default function HeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Left Organic Green Glow */}
+      {/* Primary Organic Glow */}
 
       <motion.div
         animate={{
-          x: [0, 120, -80, 0],
-          y: [0, -60, 50, 0],
-          rotate: [0, 8, -5, 0],
-          scale: [1, 1.08, 0.95, 1],
+          scale: [1, 1.04, 1],
+          opacity: [0.85, 1, 0.85],
         }}
         transition={{
-          duration: 24,
+          duration: 14,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
           absolute
-          -left-72
-          top-[-180px]
-          h-[950px]
-          w-[950px]
-          rounded-[42%_58%_65%_35%]
-          bg-[#8BB174]/30
-          blur-[180px]
+          -left-60
+          -top-44
+          h-[760px]
+          w-[760px]
+          rounded-full
+          bg-[#8BB174]/25
+          blur-[140px]
         "
       />
 
@@ -35,52 +33,26 @@ export default function HeroBackground() {
 
       <motion.div
         animate={{
-          scale: [1, 1.08, 1],
-          opacity: [0.75, 1, 0.75],
+          scale: [1, 1.03, 1],
+          opacity: [0.75, 0.95, 0.75],
         }}
         transition={{
-          duration: 12,
+          duration: 16,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
           absolute
           right-[-120px]
-          top-[-180px]
-          h-[900px]
-          w-[900px]
+          top-[-120px]
+          h-[700px]
+          w-[700px]
           rounded-full
           bg-gradient-to-br
-          from-[#fff7d6]
-          via-[#f5e9cb]
+          from-[#fff7d8]
+          via-[#f5ead0]
           to-transparent
-          opacity-80
-          blur-[160px]
-        "
-      />
-
-      {/* Bottom Brown Glow */}
-
-      <motion.div
-        animate={{
-          x: [0, -80, 60, 0],
-          y: [0, 80, -40, 0],
-          scale: [1, 0.95, 1.08, 1],
-        }}
-        transition={{
-          duration: 28,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          -right-64
-          -bottom-72
-          h-[950px]
-          w-[950px]
-          rounded-[60%_40%_35%_65%]
-          bg-[#b58d63]/22
-          blur-[190px]
+          blur-[120px]
         "
       />
 
@@ -89,27 +61,27 @@ export default function HeroBackground() {
       <div
         className="
           absolute
-          right-[12%]
-          top-[8%]
-          h-[700px]
-          w-[700px]
+          right-[10%]
+          top-[12%]
+          h-[480px]
+          w-[480px]
           rounded-full
-          bg-white/35
-          blur-[120px]
+          bg-white/30
+          blur-[100px]
         "
       />
 
-      {/* Botanical Decoration */}
+      {/* Botanical Illustration */}
 
       <svg
         className="
           absolute
-          -left-20
+          -left-12
           top-24
-          h-[620px]
-          w-[620px]
-          opacity-[0.05]
-          text-[#5a7a4c]
+          h-[520px]
+          w-[520px]
+          opacity-[0.045]
+          text-[#55724d]
         "
         viewBox="0 0 500 500"
         fill="none"
@@ -166,18 +138,18 @@ export default function HeroBackground() {
         />
       </svg>
 
-      {/* Soft Grain */}
+      {/* Fine Grain */}
 
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage:
             "radial-gradient(circle at 1px 1px,#000 1px,transparent 0)",
-          backgroundSize: "22px 22px",
+          backgroundSize: "24px 24px",
         }}
       />
 
-      {/* Light Fade */}
+      {/* Bottom Fade */}
 
       <div
         className="
