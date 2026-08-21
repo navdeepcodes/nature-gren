@@ -32,12 +32,14 @@ export default function Story() {
   return (
     <section
       id="story"
-      className="bg-[#fcfaf7] py-24 lg:py-32"
+      className="bg-[#fcfaf7] py-16 lg:py-32"
     >
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
-          <div className="relative overflow-hidden rounded-[32px]">
-            <div className="relative aspect-[4/5]">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
+          {/* Image */}
+
+          <div className="relative overflow-hidden rounded-[28px] lg:rounded-[32px]">
+            <div className="relative aspect-[4/3] sm:aspect-[4/4] lg:aspect-[4/5]">
               <Image
                 src={story.image_url ?? ""}
                 alt={story.title}
@@ -48,38 +50,43 @@ export default function Story() {
             </div>
           </div>
 
+          {/* Content */}
+
           <div>
-            <span className="text-sm font-medium uppercase tracking-[0.24em] text-[var(--primary)]">
+            <span className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--primary)]">
               Our Story
             </span>
 
-            <h2 className="mt-5 font-serif text-4xl leading-tight text-[var(--text)] md:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-serif text-3xl leading-tight text-[var(--text)] sm:text-4xl lg:mt-5 lg:text-6xl">
               {story.title}
               <br />
               {story.subtitle}
             </h2>
 
-            <p className="mt-8 text-lg leading-8 text-[var(--text-muted)]">
+            <p className="mt-5 text-base leading-7 text-[var(--text-muted)] lg:mt-8 lg:text-lg lg:leading-8">
               {story.description}
             </p>
 
             <Link
               href="/shop"
               className="
-                mt-10
+                mt-8
                 inline-flex
-                h-14
+                h-12
                 items-center
                 justify-center
                 rounded-full
                 bg-[var(--primary)]
-                px-8
+                px-6
                 text-sm
                 font-medium
                 text-white
                 transition-all
                 duration-300
                 hover:bg-[var(--primary-hover)]
+                lg:mt-10
+                lg:h-14
+                lg:px-8
               "
             >
               {story.button_text}

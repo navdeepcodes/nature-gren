@@ -29,27 +29,30 @@
   /* Shadow */
   --shadow-soft: 0 10px 35px rgba(0, 0, 0, 0.05);
 
-  /* Container */
-  --container: 1320px;
-
-  /* Navbar */
-  --navbar-height: 88px;
+  /* Layout */
+  --container: 1280px;
+  --navbar-height: 80px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--text);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -58,12 +61,31 @@ h3,
 h4 {
   font-family: var(--font-serif);
   letter-spacing: -0.02em;
+  line-height: 1.08;
 }
 
-img {
+p {
+  line-height: 1.7;
+}
+
+img,
+picture {
   display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 button {
   cursor: pointer;
+}
+
+::selection {
+  background: rgba(68, 82, 55, 0.18);
+  color: var(--text);
 }

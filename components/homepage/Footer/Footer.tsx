@@ -70,6 +70,7 @@ export default function Footer() {
                 ["About", "/about"],
                 ["Custom Orders", "/custom-orders"],
                 ["Contact", "/contact"],
+                ["Returns & Exchanges", "/return-policy"],
               ].map(([label, href]) => (
                 <li key={label}>
                   <Link

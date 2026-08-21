@@ -2,65 +2,74 @@ import Container from "@/components/layout/Container";
 
 export default function Newsletter() {
   return (
-    <section className="py-24 lg:py-32">
+    <section className="py-16 lg:py-32">
       <Container>
         <div
           className="
-            rounded-[36px]
+            rounded-[32px]
             border
             border-[var(--border)]
             bg-white
-            px-8
-            py-16
+            px-6
+            py-10
             shadow-sm
-            md:px-14
+            md:px-10
+            md:py-12
+            lg:rounded-[36px]
             lg:px-20
+            lg:py-16
           "
         >
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.24em] text-[var(--primary)]">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--primary)]">
               Stay Connected
             </p>
 
-            <h2 className="mt-4 font-serif text-4xl leading-tight text-[var(--text)] md:text-5xl">
+            <h2 className="mt-3 font-serif text-3xl leading-tight text-[var(--text)] sm:text-4xl lg:mt-4 lg:text-5xl">
               Get the Latest
               <br />
               NatureGren Updates
             </h2>
 
-            <p className="mt-6 text-lg leading-8 text-[var(--text-muted)]">
+            <p className="mt-4 text-base leading-7 text-[var(--text-muted)] lg:mt-6 lg:text-lg lg:leading-8">
               Subscribe to receive product launches, sustainable living tips,
               exclusive collections, and special offers.
             </p>
 
-            <form className="mx-auto mt-10 flex max-w-xl flex-col gap-4 sm:flex-row">
+            <form className="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row lg:mt-10 lg:gap-4">
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="
-                  h-14
+                  h-12
                   flex-1
                   rounded-full
                   border
                   border-[var(--border)]
-                  px-6
+                  px-5
                   outline-none
                   transition
                   focus:border-[var(--primary)]
+                  lg:h-14
+                  lg:px-6
                 "
               />
 
               <button
                 type="submit"
                 className="
-                  h-14
+                  h-12
+                  w-full
                   rounded-full
                   bg-[var(--primary)]
                   px-8
+                  text-sm
                   font-medium
                   text-white
                   transition
                   hover:bg-[var(--primary-hover)]
+                  sm:w-auto
+                  lg:h-14
                 "
               >
                 Subscribe
