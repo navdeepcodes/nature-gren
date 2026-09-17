@@ -1,4 +1,6 @@
-import { createClient } from "@/lib/supabase/server";
+import { unstable_cache } from "next/cache";
+
+import { createPublicClient } from "@/lib/supabase/public";
 
 export interface ShopProduct {
   id: string;
@@ -37,8 +39,8 @@ function normalizeProducts(data: any[]): ShopProduct[] {
   }));
 }
 
-export async function getShopProducts() {
-  const supabase = await createClient();
+async function fetchShopProducts() {
+  const supabase = createPublicClient();
 
   const { data, error } = await supabase
     .from("products")
@@ -58,17 +60,22 @@ export async function getShopProducts() {
     .eq("active", true)
     .order("display_order", {
       ascending: true,
-    });
+    })
+    .limit(200);
 
   if (error) throw error;
-
-  console.log("SHOP PRODUCTS:", data);
 
   return normalizeProducts(data ?? []);
 }
 
-export async function getFilteredProducts(categoryId?: string) {
-  const supabase = await createClient();
+export const getShopProducts = unstable_cache(
+  fetchShopProducts,
+  ["shop-products"],
+  { revalidate: 120 }
+);
+
+async function fetchFilteredProducts(categoryId?: string) {
+  const supabase = createPublicClient();
 
   let query = supabase
     .from("products")
@@ -91,16 +98,19 @@ export async function getFilteredProducts(categoryId?: string) {
     query = query.eq("category_id", categoryId);
   }
 
-  const { data, error } = await query.order(
-    "display_order",
-    {
+  const { data, error } = await query
+    .order("display_order", {
       ascending: true,
-    }
-  );
+    })
+    .limit(200);
 
   if (error) throw error;
 
-  console.log("FILTERED PRODUCTS:", data);
-
   return normalizeProducts(data ?? []);
 }
+
+export const getFilteredProducts = unstable_cache(
+  fetchFilteredProducts,
+  ["shop-products-filtered"],
+  { revalidate: 120 }
+);

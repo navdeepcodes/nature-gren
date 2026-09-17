@@ -44,3 +44,6 @@ next-env.d.ts
 
 # OpenNext
 .open-next/
+
+# Wrangler local dev state
+.wrangler/

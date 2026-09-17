@@ -1,4 +1,4 @@
-import { AI_MODEL, openai } from "./client";
+import { AI_MODEL, getOpenAIClient } from "./client";
 import { getProductGenerationPrompt } from "./prompts";
 import {
   ProductGeneration,
@@ -14,7 +14,7 @@ export async function generateProductFromImage(
   imageUrl: string,
   categories: ProductCategory[]
 ): Promise<ProductGeneration> {
-  const response = await openai.responses.parse({
+  const response = await getOpenAIClient().responses.parse({
     model: AI_MODEL,
 
     input: [

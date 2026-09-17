@@ -10,6 +10,13 @@
     "binding": "ASSETS"
   },
 
+  "kv_namespaces": [
+    {
+      "binding": "NEXT_INC_CACHE_KV",
+      "id": "c4a08a8601b5490a83f84b1ee40c02d7"
+    }
+  ],
+
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://naturegren.com",
     "NEXT_PUBLIC_SUPABASE_URL": "https://qyfntagbyxvfxjnkbarr.supabase.co",

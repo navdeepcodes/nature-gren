@@ -1,4 +1,6 @@
-import { createClient } from "@/lib/supabase/server";
+import { unstable_cache } from "next/cache";
+
+import { createPublicClient } from "@/lib/supabase/public";
 
 export interface HomepageHero {
   id: string;
@@ -32,8 +34,8 @@ const fallbackHero: HomepageHero = {
   featured_product_id: null,
 };
 
-export async function getHomepageHero(): Promise<HomepageHero> {
-  const supabase = await createClient();
+async function fetchHomepageHero(): Promise<HomepageHero> {
+  const supabase = createPublicClient();
 
   const { data, error } = await supabase
     .from("hero")
@@ -62,3 +64,9 @@ export async function getHomepageHero(): Promise<HomepageHero> {
       data.featured_product_id ?? null,
   };
 }
+
+export const getHomepageHero = unstable_cache(
+  fetchHomepageHero,
+  ["homepage-hero"],
+  { revalidate: 300 }
+);

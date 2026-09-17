@@ -1,9 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { generateProductFromImage } from "@/lib/ai/product";
+import { createClient } from "@/lib/supabase/server";
 
 export async function POST(request: NextRequest) {
   try {
+    // This route lives under /api/admin, not /admin, so the auth
+    // middleware's matcher (["/admin/:path*"]) does not cover it. Without
+    // this check, anyone could call it directly and rack up paid OpenAI
+    // usage on the site's account.
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json(
+        { error: "Unauthorized." },
+        { status: 401 }
+      );
+    }
+
     const body = await request.json();
 
     const { imageUrl, categories } = body;

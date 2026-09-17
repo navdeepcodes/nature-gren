@@ -11,10 +11,12 @@ import Values from "@/components/about/Values";
 import Stats from "@/components/about/Stats";
 import CTA from "@/components/about/CTA";
 
-import { getAbout } from "@/lib/cms/about";
+import { getAboutPageContent } from "@/lib/about";
+
+export const revalidate = 300;
 
 export default async function AboutPage() {
-  const about = await getAbout();
+  const about = await getAboutPageContent();
 
   return (
     <>

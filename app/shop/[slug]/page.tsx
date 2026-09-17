@@ -14,11 +14,12 @@ import ProductFeatures from "@/components/product/ProductFeatures";
 import ProductSpecifications from "@/components/product/ProductSpecifications";
 import RelatedProducts from "@/components/product/RelatedProducts";
 
-import { createClient } from "@/lib/supabase/server";
+import { getProductBySlug } from "@/lib/shop/product";
 
 import { generateProductMetadata } from "./metadata";
 
 export const generateMetadata = generateProductMetadata;
+export const revalidate = 120;
 
 interface Props {
   params: Promise<{
@@ -31,23 +32,9 @@ export default async function ProductPage({
 }: Props) {
   const { slug } = await params;
 
-  const supabase = await createClient();
+  const product = await getProductBySlug(slug);
 
-  const { data: product, error } = await supabase
-    .from("products")
-    .select(
-      `
-      *,
-      category:categories(
-        id,
-        name
-      )
-      `
-    )
-    .eq("slug", slug)
-    .single();
-
-  if (error || !product) {
+  if (!product) {
     notFound();
   }
 

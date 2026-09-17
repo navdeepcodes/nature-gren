@@ -11,6 +11,8 @@ import ShopClient from "@/components/shop/ShopClient";
 import { getShopProducts } from "@/lib/shop/products";
 import { getShopCategories } from "@/lib/shop/categories";
 
+export const revalidate = 120;
+
 export default async function ShopPage() {
   const [products, categories] = await Promise.all([
     getShopProducts(),

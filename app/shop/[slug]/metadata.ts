@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { createClient } from "@/lib/supabase/server";
+import { getProductBySlug } from "@/lib/shop/product";
 import { generateMetadata as createMetadata } from "@/lib/seo/metadata";
 
 interface Props {
@@ -14,20 +14,7 @@ export async function generateProductMetadata({
 }: Props): Promise<Metadata> {
   const { slug } = await params;
 
-  const supabase = await createClient();
-
-  const { data: product } = await supabase
-    .from("products")
-    .select(
-      `
-      name,
-      slug,
-      description,
-      image_url
-      `
-    )
-    .eq("slug", slug)
-    .single();
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     return createMetadata({

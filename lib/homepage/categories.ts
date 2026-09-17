@@ -1,7 +1,9 @@
-import { createClient } from "@/lib/supabase/server";
+import { unstable_cache } from "next/cache";
 
-export async function getHomepageCategories() {
-  const supabase = await createClient();
+import { createPublicClient } from "@/lib/supabase/public";
+
+async function fetchHomepageCategories() {
+  const supabase = createPublicClient();
 
   const { data, error } = await supabase
     .from("categories")
@@ -15,3 +17,9 @@ export async function getHomepageCategories() {
 
   return data;
 }
+
+export const getHomepageCategories = unstable_cache(
+  fetchHomepageCategories,
+  ["homepage-categories"],
+  { revalidate: 300 }
+);

@@ -1,4 +1,6 @@
-import { createClient } from "@/lib/supabase/server";
+import { unstable_cache } from "next/cache";
+
+import { createPublicClient } from "@/lib/supabase/public";
 
 export interface HomepageProduct {
   id: string;
@@ -37,8 +39,8 @@ function normalizeProducts(data: any[]): HomepageProduct[] {
   }));
 }
 
-export async function getHomepageFeaturedProducts() {
-  const supabase = await createClient();
+async function fetchHomepageFeaturedProducts() {
+  const supabase = createPublicClient();
 
   const { data, error } = await supabase
     .from("products")
@@ -59,7 +61,8 @@ export async function getHomepageFeaturedProducts() {
     .eq("featured", true)
     .order("display_order", {
       ascending: true,
-    });
+    })
+    .limit(20);
 
   if (error) {
     console.error("Homepage Featured Products Error:", error);
@@ -68,3 +71,9 @@ export async function getHomepageFeaturedProducts() {
 
   return normalizeProducts(data ?? []);
 }
+
+export const getHomepageFeaturedProducts = unstable_cache(
+  fetchHomepageFeaturedProducts,
+  ["homepage-featured-products"],
+  { revalidate: 120 }
+);

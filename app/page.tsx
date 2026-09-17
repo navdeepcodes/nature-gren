@@ -16,6 +16,8 @@ import Legacy from "@/components/homepage/Legacy";
 
 import { getHomepageHero } from "@/lib/homepage/hero";
 
+export const revalidate = 120;
+
 export default async function HomePage() {
   const hero = await getHomepageHero();
 
@@ -28,11 +30,12 @@ export default async function HomePage() {
       <main className="relative z-10">
         <Hero hero={hero} />
 
-        <Categories />
+        <FeaturedProducts />
 
         <Features />
 
-        <FeaturedProducts />
+        
+        <Categories />
 
         <Legacy />
 

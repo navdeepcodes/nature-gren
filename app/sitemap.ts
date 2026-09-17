@@ -1,18 +1,32 @@
 import type { MetadataRoute } from "next";
+import { unstable_cache } from "next/cache";
 
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
+
+export const revalidate = 300;
+
+const getSitemapProducts = unstable_cache(
+  async () => {
+    const supabase = createPublicClient();
+
+    const { data } = await supabase
+      .from("products")
+      .select("slug, updated_at")
+      .eq("active", true)
+      .limit(500);
+
+    return data ?? [];
+  },
+  ["sitemap-products"],
+  { revalidate: 300 }
+);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ??
     "https://naturegren.com";
 
-  const supabase = await createClient();
-
-  const { data: products } = await supabase
-    .from("products")
-    .select("slug, updated_at")
-    .eq("active", true);
+  const products = await getSitemapProducts();
 
   const staticPages: MetadataRoute.Sitemap = [
     {

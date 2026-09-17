@@ -1,12 +1,14 @@
-import { createClient } from "@/lib/supabase/server";
+import { unstable_cache } from "next/cache";
+
+import { createPublicClient } from "@/lib/supabase/public";
 
 export interface ShopCategory {
   id: string;
   name: string;
 }
 
-export async function getShopCategories() {
-  const supabase = await createClient();
+async function fetchShopCategories() {
+  const supabase = createPublicClient();
 
   const { data, error } = await supabase
     .from("categories")
@@ -22,3 +24,9 @@ export async function getShopCategories() {
 
   return data as ShopCategory[];
 }
+
+export const getShopCategories = unstable_cache(
+  fetchShopCategories,
+  ["shop-categories"],
+  { revalidate: 300 }
+);
