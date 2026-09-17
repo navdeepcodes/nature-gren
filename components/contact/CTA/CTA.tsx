@@ -84,7 +84,7 @@ export default function CTA() {
             </Link>
 
             <a
-              href="mailto:info@naturegren.com"
+              href="mailto:contact@naturegren.com"
               className="
                 inline-flex
                 h-14

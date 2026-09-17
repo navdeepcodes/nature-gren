@@ -103,7 +103,7 @@ export default function SEOSettings({
             onChange={(e) =>
               update("canonical_url", e.target.value)
             }
-            placeholder="https://naturegren.com"
+            placeholder="https://www.naturegren.com"
             className="h-14 w-full rounded-xl border border-[#e7e2d8] px-5 outline-none transition focus:border-[#2E4B2C]"
           />
         </div>

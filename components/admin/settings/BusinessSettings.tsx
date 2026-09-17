@@ -70,7 +70,7 @@ export default function BusinessSettings({
             onChange={(e) =>
               update("email", e.target.value)
             }
-            placeholder="hello@naturegren.com"
+            placeholder="contact@naturegren.com"
             className="h-14 w-full rounded-xl border border-[#e7e2d8] px-5 outline-none transition focus:border-[#2E4B2C]"
           />
         </div>

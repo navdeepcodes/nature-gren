@@ -24,7 +24,7 @@ const getSitemapProducts = unstable_cache(
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://naturegren.com";
+    "https://www.naturegren.com";
 
   const products = await getSitemapProducts();
 

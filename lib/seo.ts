@@ -8,7 +8,7 @@ export async function getSiteMetadata(): Promise<Metadata> {
   const baseUrl =
     settings.canonical_url ||
     process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://naturegren.com";
+    "https://www.naturegren.com";
 
   const title =
     settings.seo_title ||

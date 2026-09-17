@@ -4,16 +4,16 @@ export const organizationSchema = {
 
   name: "NatureGren",
 
-  url: "https://naturegren.com",
+  url: "https://www.naturegren.com",
 
-  logo: "https://naturegren.com/logo.png",
+  logo: "https://www.naturegren.com/logo.png",
 
-  image: "https://naturegren.com/og-image.jpg",
+  image: "https://www.naturegren.com/og-image.jpg",
 
   description:
     "Premium handcrafted eco-friendly jute products.",
 
-  email: "info@naturegren.com",
+  email: "contact@naturegren.com",
 
   telephone: "+91XXXXXXXXXX",
 

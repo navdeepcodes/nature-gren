@@ -5,7 +5,7 @@ export const SITE = {
 
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://naturegren.com",
+    "https://www.naturegren.com",
 
   // Brand title (keep this exactly as the client wants)
   title: "NatureGren · Inspired by Nature",

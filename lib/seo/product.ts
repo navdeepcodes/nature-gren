@@ -18,7 +18,7 @@ interface ProductSchemaProps {
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://naturegren.com";
+  "https://www.naturegren.com";
 
 export function createProductSchema({
   name,

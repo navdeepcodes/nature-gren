@@ -40,7 +40,7 @@ export default async function ProductPage({
 
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://naturegren.com";
+    "https://www.naturegren.com";
 
   const productUrl = `${baseUrl}/shop/${product.slug}`;
 

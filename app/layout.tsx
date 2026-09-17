@@ -71,7 +71,7 @@ const organizationSchema = {
 
   description: SITE.description,
 
-  email: "info@naturegren.com",
+  email: "contact@naturegren.com",
 
   sameAs: [
     // "https://www.facebook.com/naturegren",
