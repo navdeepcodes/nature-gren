@@ -21,6 +21,12 @@ export const revalidate = 120;
 export default async function HomePage() {
   const hero = await getHomepageHero();
 
+  // Closing banner reuses a hero photo (the last still image, so it differs from the opener).
+  const ctaImage =
+    [...(hero.image_urls ?? [])]
+      .reverse()
+      .find((url) => !/\.(mp4|webm|mov|ogg)$/i.test(url)) ?? null;
+
   return (
     <>
       <AnimatedBackground />
@@ -44,9 +50,9 @@ export default async function HomePage() {
 
         <Certification />
 
-        <Newsletter />
+        <CTA image={ctaImage} />
 
-        <CTA />
+        <Newsletter />
       </main>
 
       <Footer />

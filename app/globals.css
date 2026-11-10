@@ -89,3 +89,12 @@ button {
   background: rgba(68, 82, 55, 0.18);
   color: var(--text);
 }
+/* Homepage hero: fills the slide progress bar over one slide's duration. */
+@keyframes hero-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
