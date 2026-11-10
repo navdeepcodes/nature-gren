@@ -41,18 +41,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/story`,
+    // /story does not exist; the brand story lives at /about.
+    ...[
+      { path: "/about", priority: 0.8 },
+      { path: "/custom-orders", priority: 0.8 },
+      { path: "/contact", priority: 0.8 },
+      { path: "/return-policy", priority: 0.4 },
+    ].map(({ path, priority }) => ({
+      url: `${baseUrl}${path}`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+      changeFrequency: "monthly" as const,
+      priority,
+    })),
   ];
 
   const productPages =

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
 import Container from "@/components/layout/Container";
+import { whatsappUrl } from "@/lib/whatsapp/message";
 
 export default function InquiryCTA() {
   return (
@@ -23,7 +24,7 @@ export default function InquiryCTA() {
 
           <div className="mt-12 flex flex-wrap justify-center gap-5">
             <a
-              href="https://wa.me/919999999999"
+              href={whatsappUrl()}
               className="inline-flex h-14 items-center gap-3 rounded-full bg-white px-8 font-semibold text-[#2d4b2d]"
             >
               <MessageCircle size={18} />

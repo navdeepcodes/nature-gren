@@ -1,27 +1,35 @@
 "use client";
 
-import { useState } from "react";
-
 import Container from "@/components/layout/Container";
+import { whatsappUrl } from "@/lib/whatsapp/message";
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  // There is no mail backend: hand the inquiry to WhatsApp, like the cart does.
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    setLoading(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const field = (name: string) =>
+      String(data.get(name) ?? "").trim();
 
-    // TODO:
-    // Send to Supabase / Email API
+    const details = [
+      `Name: ${field("name")}`,
+      `Email: ${field("email")}`,
+      field("phone") && `Phone: ${field("phone")}`,
+      field("company") && `Company: ${field("company")}`,
+      field("subject") && `Subject: ${field("subject")}`,
+    ].filter(Boolean);
 
-    setTimeout(() => {
-      alert("Inquiry submitted successfully!");
+    const message = [
+      "Hello NatureGren,",
+      field("message"),
+      details.join("\n"),
+    ].join("\n\n");
 
-      setLoading(false);
-
-      (e.target as HTMLFormElement).reset();
-    }, 1200);
+    // Opened synchronously inside the submit handler so popup blockers allow it.
+    window.open(whatsappUrl(message), "_blank", "noopener");
+    form.reset();
   }
 
   const inputClass =
@@ -76,6 +84,7 @@ export default function ContactForm() {
           >
             <div className="grid gap-4 md:gap-6 md:grid-cols-2">
               <input
+                name="name"
                 placeholder="Full Name"
                 required
                 className={inputClass}
@@ -83,28 +92,34 @@ export default function ContactForm() {
 
               <input
                 type="email"
+                name="email"
                 placeholder="Email Address"
                 required
                 className={inputClass}
               />
 
               <input
+                name="phone"
                 placeholder="Phone Number"
                 className={inputClass}
               />
 
               <input
+                name="company"
                 placeholder="Company"
                 className={inputClass}
               />
             </div>
 
             <input
+              name="subject"
               placeholder="Subject"
               className={`${inputClass} mt-4 md:mt-6`}
             />
 
             <textarea
+              name="message"
+              required
               rows={6}
               placeholder="Tell us about your requirements..."
               className="mt-4 w-full rounded-xl border border-[#ddd] bg-white p-4 text-[var(--text)] placeholder:text-[var(--text-muted)] placeholder:opacity-100 appearance-none outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10 md:mt-6 md:p-5"
@@ -112,7 +127,6 @@ export default function ContactForm() {
 
             <button
               type="submit"
-              disabled={loading}
               className="
                 mt-6
                 h-12
@@ -130,7 +144,7 @@ export default function ContactForm() {
                 md:text-base
               "
             >
-              {loading ? "Sending..." : "Send Inquiry"}
+              Send Inquiry on WhatsApp
             </button>
           </form>
 

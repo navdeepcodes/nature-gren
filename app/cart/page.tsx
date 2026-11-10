@@ -17,8 +17,8 @@ import Footer from "@/components/homepage/Footer";
 import Container from "@/components/layout/Container";
 
 import { useCart } from "@/context/CartContext";
+import { whatsappUrl } from "@/lib/whatsapp/message";
 
-const PHONE = "917019493960";
 
 export default function CartPage() {
   const {
@@ -70,9 +70,7 @@ ${base}/shop/${item.slug}
 Thank you. I look forward to your response`;
 
     window.open(
-      `https://wa.me/${PHONE}?text=${encodeURIComponent(
-        message
-      )}`,
+      whatsappUrl(message),
       "_blank"
     );
   }

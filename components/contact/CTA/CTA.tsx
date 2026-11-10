@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 
 import Container from "@/components/layout/Container";
+import { whatsappUrl } from "@/lib/whatsapp/message";
 
 export default function CTA() {
   return (
@@ -109,7 +110,7 @@ export default function CTA() {
             </a>
 
             <a
-              href="https://wa.me/919999999999"
+              href={whatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="

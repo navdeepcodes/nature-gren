@@ -1,4 +1,11 @@
-const PHONE = "14693506400";
+/** NatureGren's WhatsApp number (+1 469 350 6400), digits only. */
+export const WHATSAPP_NUMBER = "14693506400";
+
+/** wa.me link to NatureGren, optionally with a prefilled message. */
+export function whatsappUrl(text?: string) {
+  const base = `https://wa.me/${WHATSAPP_NUMBER}`;
+  return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+}
 
 export interface WhatsAppProduct {
   name: string;
@@ -30,7 +37,7 @@ Could you please provide more information about this product, including its pric
 Thank you. I look forward to your response.`;
 
   const params = new URLSearchParams({
-    phone: PHONE,
+    phone: WHATSAPP_NUMBER,
     text: message,
   });
 

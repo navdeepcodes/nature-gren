@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Container from "@/components/layout/Container";
+import { whatsappUrl } from "@/lib/whatsapp/message";
 
 export default function Details() {
   return (
@@ -32,7 +33,7 @@ export default function Details() {
 
             <div className="mt-12 flex flex-wrap gap-5">
               <a
-                href="https://wa.me/919999999999"
+                href={whatsappUrl()}
                 className="rounded-full bg-[var(--primary)] px-8 py-4 text-white"
               >
                 WhatsApp Inquiry
