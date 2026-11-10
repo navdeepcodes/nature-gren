@@ -30,12 +30,11 @@ export default async function HomePage() {
       <main className="relative z-10">
         <Hero hero={hero} />
 
+        <Categories />
+
         <FeaturedProducts />
 
         <Features />
-
-        
-        <Categories />
 
         <Legacy />
 

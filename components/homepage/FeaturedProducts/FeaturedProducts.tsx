@@ -2,82 +2,41 @@ import Link from "next/link";
 
 import Container from "@/components/layout/Container";
 
-import ProductCard from "./ProductCard";
+import ProductRail from "./ProductRail";
 
 import { getHomepageFeaturedProducts } from "@/lib/homepage/products";
 
 export default async function FeaturedProducts() {
   const products = await getHomepageFeaturedProducts();
 
-  return (
-    <section className="py-16 md:py-20 lg:py-24">
-      <Container>
-        <div className="flex flex-col items-start justify-between gap-6 md:gap-8 lg:flex-row lg:items-end">
-          <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.28em] text-[var(--primary)] md:text-sm">
-              Featured Products
-            </p>
+  if (products.length === 0) return null;
 
-            <h2 className="mt-3 font-serif text-3xl leading-tight text-[var(--text)] sm:text-4xl md:text-5xl lg:text-6xl">
-              Best Sellers
+  return (
+    <section className="overflow-hidden py-16 md:py-20 lg:py-24">
+      <Container>
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-xl">
+            <h2 className="text-balance font-serif text-4xl leading-[1.05] text-[var(--text)] md:text-5xl lg:text-6xl">
+              Best sellers
             </h2>
 
-            <p className="mt-4 text-base leading-7 text-[var(--text-muted)] md:mt-6 md:text-lg md:leading-8">
-              Explore some of our most loved handcrafted jute products,
-              thoughtfully created for everyday use.
+            <p className="mt-4 text-base leading-7 text-[var(--text-muted)] md:text-lg md:leading-8">
+              The pieces customers come back for, from
+              everyday totes to gift-ready bottle bags.
             </p>
           </div>
 
           <Link
             href="/shop"
-            className="
-              inline-flex
-              h-11
-              md:h-14
-              items-center
-              rounded-full
-              border
-              border-[var(--border)]
-              px-5
-              md:px-8
-              text-sm
-              font-medium
-              transition-all
-              duration-300
-              hover:bg-white
-              hover:shadow-md
-            "
+            className="self-start text-sm font-semibold text-[var(--primary)] underline decoration-[var(--accent)] decoration-2 underline-offset-[6px] transition-colors hover:text-[var(--primary-hover)] hover:decoration-[var(--primary)] md:self-auto"
           >
-            View All Products
+            Shop all products
           </Link>
         </div>
 
-        {products.length === 0 ? (
-          <div className="mt-10 md:mt-14 rounded-[24px] md:rounded-[30px] border border-dashed border-[var(--border)] py-16 md:py-24 text-center text-[var(--text-muted)]">
-            No featured products added yet.
-          </div>
-        ) : (
-          <div
-            className="
-              mt-10
-              grid
-              grid-cols-2
-              gap-4
-              sm:gap-5
-              md:mt-14
-              md:gap-6
-              lg:grid-cols-4
-              lg:gap-8
-            "
-          >
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))}
-          </div>
-        )}
+        <div className="mt-10 md:mt-14">
+          <ProductRail products={products} />
+        </div>
       </Container>
     </section>
   );
