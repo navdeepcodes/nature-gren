@@ -10,6 +10,12 @@
     "binding": "ASSETS"
   },
 
+  // Cloudflare Images: lets next/image resize and convert photos (WebP/AVIF).
+  // Without it OpenNext serves every image at its original size.
+  "images": {
+    "binding": "IMAGES"
+  },
+
   "kv_namespaces": [
     {
       "binding": "NEXT_INC_CACHE_KV",
