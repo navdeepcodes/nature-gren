@@ -75,10 +75,13 @@ export default function HeroStage({
     "flex h-11 w-11 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-colors hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#26301f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f4efe6]";
 
   return (
+    // min-h (not h): fills the screen but grows when the content needs more room,
+    // so the headline is never pushed under the navbar on short screens.
+    // The headline also scales with screen height (svh), not just width.
     <section
       aria-roledescription="carousel"
       aria-label="NatureGren highlights"
-      className="relative isolate flex min-h-[600px] items-end overflow-hidden bg-[#26301f] text-[#f4efe6] h-[calc(100svh-80px)] max-h-[940px]"
+      className="relative isolate flex min-h-[min(calc(100svh-80px),940px)] items-end overflow-hidden bg-[#26301f] pt-16 text-[#f4efe6] md:pt-20"
     >
       {/* Media layer */}
       <div className="absolute inset-0 -z-20">
@@ -130,7 +133,7 @@ export default function HeroStage({
 
       <div className="mx-auto w-full max-w-[var(--container)] px-4 pb-10 sm:px-6 md:pb-14 lg:px-8 lg:pb-16 xl:px-10">
         <div className="max-w-3xl">
-          <h1 className="text-balance font-serif text-[3.1rem] font-medium leading-[0.95] tracking-[-0.02em] sm:text-7xl lg:text-[6.5rem]">
+          <h1 className="text-balance font-serif text-[clamp(2.6rem,7.5svh,3.1rem)] font-medium leading-[0.95] tracking-[-0.02em] sm:text-[clamp(3rem,9svh,4.5rem)] lg:text-[clamp(3.5rem,10svh,6.5rem)]">
             {title}
             {accent ? (
               <span className="block text-[#e3d3b6]">{accent}</span>
